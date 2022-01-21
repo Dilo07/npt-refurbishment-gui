@@ -9,7 +9,7 @@ export const environment = {
     configFile: 'assets/config/test/config-app.json'
   },
   header: {
-    img: 'assets/images/Logo_Autostrade2.png',
+    img: 'assets/images/logo_logistic.png',
     title: 'Refurbishment'
   },
   footer: {

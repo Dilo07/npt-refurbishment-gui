@@ -10,10 +10,12 @@ export const ROLES = Object.freeze({
   fleetMng: 'fleet'
 });
 
+const SUBMENU_ROUTES = [];
+
 const MENUITEMS = [
   {
     state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'home', children: [], roles: []
-  },
+  }
 ];
 
 @Injectable()
