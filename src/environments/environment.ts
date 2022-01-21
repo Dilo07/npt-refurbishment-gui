@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  security: {
+    type: 'noAuth', // noAuth - keycloak.
+    configFile: 'assets/config/test/config-app.json'
+  },
+  header: {
+    img: 'assets/images/Logo_Autostrade2.png',
+    title: 'Refurbishment'
+  },
+  footer: {
+    year: '2021',
+    title: 'Powered by Movyon',
+    link: 'https://www.movyon.com/'
+  }
 };
 
 /*

@@ -42,6 +42,7 @@
         "@typescript-eslint/semi": ["warn"],
         "@typescript-eslint/indent": ["warn", 2],
         "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "prefer-arrow/prefer-arrow-functions": "warn",
         "no-trailing-spaces": "warn"
       }
     },
