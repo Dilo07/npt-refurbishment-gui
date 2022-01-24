@@ -13,9 +13,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './componets/comp-dashboard/dashboard.component';
 import { MenuItemService } from './npt-template-menu/menu-item.service';
 
-export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
+export const translateHttploader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 
 
 @NgModule({
@@ -33,7 +31,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
+        useFactory: (translateHttploader),
         deps: [HttpClient]
       }
     }),
