@@ -37,8 +37,26 @@
         "LAST_PAGE": "Ultima pagina",
         "OF": "di"
     },
-    "COMMON": 
-    {
+    "PROCESSING": {
+        "TITLE": "Lavorazione lotto",
+        "NEW_BATCH": "Inserisci le informazione del nuovo lotto",
+        "BATCH": "Lotto",
+        "INSERT_BATCH": "Inserisci numero lotto",
+        "BOX": "N. scatole",
+        "INSERT_BOX": "Inserisci numero scatole",
+        "HARDWARE": "Inserisci il tipo di device",
+        "OPEN_BATCH": "Avvia lotto"
+    },
+    "BOX":{
+        "TITLE": "Lavorazione scatola" 
+    },
+    "HARDWARE": {
+        "1": "Obu Go",
+        "2": "Even x",
+        "3": "Arianna II",
+        "4": "Arianna I"
+    },
+    "COMMON": {
         "ACTION": {
             "SAVE": "Salva",
             "DELETE": "Cancella",

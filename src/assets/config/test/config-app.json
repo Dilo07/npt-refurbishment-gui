@@ -6,6 +6,7 @@
   "context_app": "",
   "viewOuter" : false,
   "flow_implicit": false,
+  "batchDefault": "50014",
   "no_auth": {
     "roles": ["driver", "opmovyon", "installer", "movyon", "fleet"],
     "user": {

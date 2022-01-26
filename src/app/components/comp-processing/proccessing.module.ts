@@ -3,15 +3,26 @@ import { CommonModule } from '@angular/common';
 
 import { BoxRoutingModule } from './processing.routing';
 import { BoxComponent } from './box/box.component';
+import { PageProcessingComponent } from './page.component';
+import { MaterialModule } from '@npt/npt-template';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    BoxComponent
+    BoxComponent,
+    PageProcessingComponent
   ],
   imports: [
     CommonModule,
-    BoxRoutingModule
+    BoxRoutingModule,
+    MaterialModule,
+    FlexLayoutModule,
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class BoxModule { }

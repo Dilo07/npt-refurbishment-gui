@@ -41,6 +41,8 @@
         "@typescript-eslint/member-ordering": ["warn"],
         "@typescript-eslint/semi": ["warn"],
         "@typescript-eslint/indent": ["warn", 2],
+        "@typescript-eslint/naming-convention": ["warn"],
+        "@typescript-eslint/no-inferrable-types": ["warn"],
         "@angular-eslint/no-empty-lifecycle-method": "warn",
         "prefer-arrow/prefer-arrow-functions": "warn",
         "no-trailing-spaces": "warn"

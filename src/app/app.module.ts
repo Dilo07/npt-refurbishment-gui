@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MaterialModule, TemplateNptModule } from '@npt/npt-template';
+import { ConfigInitService, getPropertyFromConfig, MaterialModule, TemplateNptModule } from '@npt/npt-template';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,11 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     }),
   ],
   providers: [
+    { provide: 'batchDefault', useValue: 'batchDefault'},
+    {
+      provide: 'batchDefaultData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['batchDefault', ConfigInitService]
+    },
     // npt template
     { provide: 'menuService', useClass: MenuItemService },
     { provide: 'header', useValue: environment.header },

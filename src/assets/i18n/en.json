@@ -37,6 +37,25 @@
         "LAST_PAGE": "Last pagina",
         "OF": "of"
     },
+    "PROCESSING": {
+        "TITLE": "Batch processing ",
+        "NEW_BATCH": "Insert the informations of new batch",
+        "BATCH": "Batch",
+        "INSERT_BATCH": "Inserisci numero lotto",
+        "BOX": "Scatole #",
+        "INSERT_BOX": "Insert box number",
+        "HARDWARE": "Insert type device",
+        "OPEN_BATCH": "Start batch"
+    },
+    "BOX":{
+        "TITLE": "Box processing" 
+    },
+    "HARDWARE": {
+        "1": "Obu Go",
+        "2": "Even x",
+        "3": "Arianna II",
+        "4": "Arianna I"
+    },
     "COMMON": 
     {
         "ACTION": {

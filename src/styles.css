@@ -8,3 +8,8 @@
 .mat-list-item.selected > .mat-list-item-content > a {
     background-color: darkseagreen !important;
 }
+
+.greenButton{
+    background-color: darkseagreen;
+    color: white;
+}

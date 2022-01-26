@@ -15,7 +15,7 @@ export const environment = {
     title: 'Refurbishment'
   },
   footer: {
-    year: 'v. ' + version + '2021',
+    year: 'v. ' + version + ' 2021',
     title: 'Powered by Movyon',
     link: 'https://www.movyon.com/'
   }
