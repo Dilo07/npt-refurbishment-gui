@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,10 +6,14 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
     private translateService: TranslateService
-  ) { this.setI18n(); }
+  ) { }
+
+  ngOnInit(): void {
+    this.setI18n();
+  }
 
   private setI18n(): void {
     this.translateService.addLangs(['it', 'en']);

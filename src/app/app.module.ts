@@ -10,7 +10,7 @@ import { MaterialModule, TemplateNptModule } from '@npt/npt-template';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './componets/comp-dashboard/dashboard.component';
+import { DashboardComponent } from './components/comp-dashboard/dashboard.component';
 import { MenuItemService } from './npt-template-menu/menu-item.service';
 
 export const translateHttploader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http, 'assets/i18n/', '.json');
