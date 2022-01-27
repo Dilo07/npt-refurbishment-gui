@@ -41,14 +41,19 @@
         "TITLE": "Batch processing ",
         "NEW_BATCH": "Insert the informations of new batch",
         "BATCH": "Batch",
-        "INSERT_BATCH": "Inserisci numero lotto",
+        "INSERT_BATCH": "Insert batch number",
         "BOX": "Scatole #",
         "INSERT_BOX": "Insert box number",
         "HARDWARE": "Insert type device",
         "OPEN_BATCH": "Start batch"
     },
     "BOX":{
-        "TITLE": "Box processing" 
+        "TITLE": "Box processing",
+        "ADD": "Add obu",
+        "OBUID": "Insert obu Id",
+        "INSERT_OBUID": "Insert a correct obu id",
+        "ICCID": "Insert icc Id",
+        "INSERT_ICCID": "Insert a correct icc id" 
     },
     "HARDWARE": {
         "1": "Obu Go",

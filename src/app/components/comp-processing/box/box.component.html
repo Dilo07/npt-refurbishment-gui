@@ -1,11 +1,50 @@
 <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'BOX.TITLE' | translate}}</mat-card-title>
-<mat-card-content>
-    <mat-card>
-        <mat-card-content>
-            <p>lotto 40%</p>
-            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-            <p>scatola 80%</p>
-            <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
-        </mat-card-content>
-    </mat-card>
+<mat-card-content fxLayout="column" fxLayoutGap="50px">
+    <div fxLayout="row wrap" fxLayoutAlign="start">
+        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-content>
+                <mat-card-title>Lot number</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].lotNumber}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-content>
+                <p>lotto 40%</p>
+                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                <p>scatola 80%</p>
+                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="!boxOpen else open">
+        <button mat-button class="greenButton" (click)="boxOpen = true"> Nuova scatola</button>
+    </div>
+    <ng-template #open>
+        <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
+            <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+                <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                    <mat-label>{{'BOX.OBUID' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="ctrlObuId" required>
+                    <mat-error>{{'BOX.INSERT_OBUID' | translate}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                    <mat-label>{{'BOX.ICCID' | translate}}</mat-label>
+                    <input matInput type="text" formControlName="ctrlIccId" required>
+                    <mat-error>{{'BOX.INSERT_ICCID' | translate}}</mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-button class="greenButton" [disabled]="formGroup.invalid" (click)="addObu()">
+                {{'BOX.ADD' | translate}}
+            </button>
+        </div>
+        <mat-card-title>Obu Inseriti</mat-card-title>
+        <div fxLayout="row wrap" fxLayoutGap="50px">
+            <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of listObu">
+                <mat-icon>tablet</mat-icon>
+                <h4>{{item.obuId}}</h4>
+            </div>
+        </div>
+    </ng-template>
 </mat-card-content>

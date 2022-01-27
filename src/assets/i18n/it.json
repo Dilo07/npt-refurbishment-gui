@@ -48,7 +48,12 @@
         "OPEN_BATCH": "Avvia lotto"
     },
     "BOX":{
-        "TITLE": "Lavorazione scatola" 
+        "TITLE": "Lavorazione scatola",
+        "ADD": "Aggiungi obu",
+        "OBUID": "Inserisci l'obu Id",
+        "INSERT_OBUID": "Inserisci un obu id corretto",
+        "ICCID": "Inserisci l'icc Id",
+        "INSERT_ICCID": "Inserisci un icc id corretto"
     },
     "HARDWARE": {
         "1": "Obu Go",

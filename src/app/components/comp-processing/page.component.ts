@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BatchBoxService } from 'src/app/service/batch-box.service';
+import { Batch, Hardware } from '../domain/domain';
 
 @Component({
   selector: 'app-page',
@@ -8,23 +10,50 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   ]
 })
 export class PageProcessingComponent implements OnInit {
-  public batchOpen: boolean;
+  public batchOpen = false;
   public formGroup: FormGroup;
-  public allHardware = [1, 2, 3, 4];
+  public allHardware = [Hardware['arianna I'], Hardware['arianna II'], Hardware['even x'], Hardware['obu Go']];
+  public activeBatch: Batch[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
+    private batchBoxService: BatchBoxService,
     @Inject('batchDefaultData') private batchDefault: string
   ) { }
 
   ngOnInit(): void {
+    this.batchBoxService.getLotList(true).subscribe(
+      list => {
+        if (list.length === 0) {
+          this.createForm();
+        } else {
+          this.activeBatch = list;
+          this.batchOpen = true;
+        }
+      }
+    );
+  }
+
+  public addBatch(): void {
+    const formBatch = new Batch();
+    const batch1 = this.formGroup.get('ctrlBatch1').value;
+    const batch2 = this.formGroup.get('ctrlBatch2').value;
+    const batch3 = this.formGroup.get('ctrlBatch3').value;
+    formBatch.lotNumber = batch1 + '/' + batch2 + '/' + batch3;
+    formBatch.hardware = this.formGroup.get('ctrlHrdw').value;
+    formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
+    formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
+    console.log(formBatch);
+  }
+
+  private createForm(): void {
     this.formGroup = this.formBuilder.group({
       ctrlBatch1: ['', Validators.required],
       ctrlBatch2: ['', Validators.required],
       ctrlBatch3: [this.batchDefault, Validators.required],
-      ctrlHrdw: [4, Validators.required],
-      ctrlBoxNum: ['', Validators.required]
+      ctrlHrdw: [Hardware['arianna I'], Validators.required],
+      ctrlBoxNum: [100, Validators.required],
+      ctrlBoxSize: [48, Validators.required]
     });
   }
-
 }

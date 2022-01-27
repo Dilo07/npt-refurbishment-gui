@@ -22,7 +22,7 @@
                     </mat-form-field>
                 </div>
                 <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
-                    <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                    <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                         <mat-label>{{'PROCESSING.HARDWARE' | translate}}</mat-label>
                         <mat-select formControlName="ctrlHrdw">
                             <mat-option *ngFor="let hardware of allHardware" [value]="hardware">
@@ -30,21 +30,26 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                    <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                         <mat-label>{{'PROCESSING.BOX' | translate}}</mat-label>
                         <input matInput type="number" formControlName="ctrlBoxNum" required>
                         <mat-error>{{'PROCESSING.INSERT_BOX' | translate}}</mat-error>
                     </mat-form-field>
+                    <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                        <mat-label>{{'PROCESSING.BOX_SIZE' | translate}}</mat-label>
+                        <input matInput type="number" formControlName="ctrlBoxSize" required>
+                        <mat-error>{{'PROCESSING.INSERT_BOX_SIZE' | translate}}</mat-error>
+                    </mat-form-field>
                 </div>
             </form>
             <div fxLayout="row" fxLayoutAlign="center center">
-                <button mat-button class="greenButton" [disabled]="formGroup.invalid" (click)="batchOpen = true">
+                <button mat-button class="greenButton" [disabled]="formGroup.invalid" (click)="addBatch(); batchOpen = true">
                     {{'PROCESSING.OPEN_BATCH' | translate}}
                 </button>
             </div>
         </div>
         <ng-template #box>
-            <app-box></app-box>
+            <app-box [batchOpen]="activeBatch"></app-box>
         </ng-template>
     </mat-card-content>
 </mat-card>
