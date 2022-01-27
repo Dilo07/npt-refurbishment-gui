@@ -16,7 +16,7 @@ export class WorkstationService {
   getWorkstation(key: string): Observable<Workstation> {
     /*  return this.http.get<Workstation>(this.apiUrl + `/workstation/${key}`)
        .pipe(catchError(err => { throw err; })); */
-    /* return of({ id: 1, description: 'test' }); */
-    return of(null);
+    return of({ id: 1, description: 'test' });
+    /* return of(null); */
   }
 }
