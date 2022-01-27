@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/comp-dashboard/dashboard.component';
 import { MenuItemService } from './npt-template-menu/menu-item.service';
+import { WorkstatNotfoundComponent } from './components/comp-workstat-notfound/workstat-notfound.component';
 
 export const translateHttploader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 
@@ -19,7 +20,8 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    WorkstatNotfoundComponent
   ],
   imports: [
     BrowserModule,

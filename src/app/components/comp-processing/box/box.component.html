@@ -1,7 +1,7 @@
 <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'BOX.TITLE' | translate}}</mat-card-title>
 <mat-card-content fxLayout="column" fxLayoutGap="50px">
     <div fxLayout="row wrap" fxLayoutAlign="start">
-        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
+        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100" *ngIf="batchOpen.length > 0">
             <mat-card-content>
                 <mat-card-title>Lot number</mat-card-title>
                 <mat-card-subtitle>{{batchOpen[0].lotNumber}}</mat-card-subtitle>
@@ -11,13 +11,15 @@
             <mat-card-content>
                 <p>lotto 40%</p>
                 <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-                <p>scatola 80%</p>
-                <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                <span *ngIf="boxOpen">
+                    <p>scatola 80%</p>
+                    <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                </span>
             </mat-card-content>
         </mat-card>
     </div>
     <div *ngIf="!boxOpen else open">
-        <button mat-button class="greenButton" (click)="boxOpen = true"> Nuova scatola</button>
+        <button mat-button class="greenButton" (click)="addBox();"> Nuova scatola</button>
     </div>
     <ng-template #open>
         <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">

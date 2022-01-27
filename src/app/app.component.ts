@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { SessionService } from '@npt/npt-template';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,12 @@ import { SessionService } from '@npt/npt-template';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private translateService: TranslateService,
-    private sessionService: SessionService
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
     this.setI18n();
-    console.log('postazione ' + this.sessionService.getSessionLocal('postazione'));
+    console.log('postazione ' + localStorage.getItem('guid'));
   }
 
   private setI18n(): void {

@@ -17,3 +17,19 @@ export enum Hardware {
   'arianna II',
   'arianna I'
 }
+
+export interface Box {
+  id: number;
+  nextBoxId: number;
+  isClosed: boolean;
+  workstationId: number;
+  lot: Batch;
+  count: number;
+  dateIns: Date;
+  dateClose: Date;
+}
+
+export interface Workstation{
+  id: number;
+  description: string;
+}
