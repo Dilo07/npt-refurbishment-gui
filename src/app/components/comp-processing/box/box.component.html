@@ -1,10 +1,14 @@
 <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'BOX.TITLE' | translate}}</mat-card-title>
-<mat-card-content fxLayout="column" fxLayoutGap="50px">
-    <div fxLayout="row wrap" fxLayoutAlign="start">
-        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100" *ngIf="batchOpen.length > 0">
+<mat-card-content fxLayout="column" fxLayoutGap="40px">
+    <div fxLayout="row wrap" fxLayoutAlign="start" *ngIf="batchOpen.length > 0">
+        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
             <mat-card-content>
                 <mat-card-title>Lot number</mat-card-title>
                 <mat-card-subtitle>{{batchOpen[0].lotNumber}}</mat-card-subtitle>
+                <mat-card-title>numbero scatole</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].boxNumber}}</mat-card-subtitle>
+                <mat-card-title>obu per scatola</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].boxSize}}</mat-card-subtitle>
             </mat-card-content>
         </mat-card>
         <mat-card fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">

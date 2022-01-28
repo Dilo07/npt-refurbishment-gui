@@ -44,6 +44,8 @@
         "INSERT_BATCH": "Inserisci numero lotto",
         "BOX": "N. scatole",
         "INSERT_BOX": "Inserisci numero scatole",
+        "BOX_SIZE": "N. obu per scatola",
+        "INSERT_BOX_SIZE": "Inserisci n. obu per scatola",
         "HARDWARE": "Inserisci il tipo di device",
         "OPEN_BATCH": "Avvia lotto",
         "BATCH_CREATE": "Lotto creato correttamente"

@@ -45,7 +45,6 @@ export class PageProcessingComponent implements OnInit {
     formBatch.hardware = this.formGroup.get('ctrlHrdw').value;
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
-    console.log(formBatch);
     // invia il lotto e cambia componente nella view
     this.batchBoxService.addBatch(formBatch).subscribe(
       (lot) => this.activeBatch.push(lot),
