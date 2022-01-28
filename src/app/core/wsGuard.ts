@@ -18,18 +18,22 @@ export class WorkStationGuard implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     const fingerId = localStorage.getItem('fingerId');
     const guId = localStorage.getItem('guId');
-    if (guId){
+    if (guId) {
       this.guard = true;
-    }else{
+    } else {
       this.workStationService.getWorkstation(fingerId).subscribe(
         data => {
           if (data) {
             this.guard = true;
             this.sessionService.setSessionLocal('guId', data.id);
-          }else {
+          } else {
             this.router.navigate(['workstation-notfound']);
             this.guard = false;
           }
+        },
+        () => {
+          this.router.navigate(['workstation-notfound']);
+          this.guard = false;
         }
       );
     }

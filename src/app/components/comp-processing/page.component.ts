@@ -23,6 +23,7 @@ export class PageProcessingComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    // chiamata per vedere se ci sono lotti aperti
     this.batchBoxService.getLotList(true).subscribe(
       list => {
         if (list.length > 0) {
@@ -43,6 +44,7 @@ export class PageProcessingComponent implements OnInit {
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
     console.log(formBatch);
+    // invia il lotto e cambia componente nella view
     this.batchBoxService.addBatch(formBatch).subscribe(
       (lot) => this.activeBatch.push(lot)
     );

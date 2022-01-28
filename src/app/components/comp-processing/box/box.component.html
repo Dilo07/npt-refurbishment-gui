@@ -9,16 +9,16 @@
         </mat-card>
         <mat-card fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
             <mat-card-content>
-                <p>lotto 40%</p>
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-                <span *ngIf="boxOpen">
-                    <p>scatola 80%</p>
-                    <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                <p>lotto: {{batchOpen[0].countClosedBox}}% - scatole aperte: {{batchOpen[0].countOpenBox}}</p>
+                <mat-progress-bar mode="determinate" value="{{batchOpen[0].countClosedBox}}"></mat-progress-bar>
+                <span *ngIf="actualBox">
+                    <p>scatola {{actualBox.count}}%</p>
+                    <mat-progress-bar mode="determinate" value="{{actualBox.count}}"></mat-progress-bar>
                 </span>
             </mat-card-content>
         </mat-card>
     </div>
-    <div *ngIf="!boxOpen else open">
+    <div *ngIf="!actualBox else open">
         <button mat-button class="greenButton" (click)="addBox();"> Nuova scatola</button>
     </div>
     <ng-template #open>

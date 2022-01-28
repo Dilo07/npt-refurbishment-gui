@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
-import { Batch, Obu } from '../../domain/domain';
+import { Batch, Box, Obu } from '../../domain/domain';
 
 @Component({
   selector: 'app-box',
@@ -15,8 +15,8 @@ import { Batch, Obu } from '../../domain/domain';
 })
 export class BoxComponent implements OnInit {
   @Input() batchOpen: Batch[] = [];
+  public actualBox: Box;
   public formGroup: FormGroup;
-  public boxOpen = false;
   public listObu: { obuId: string; iccId: string }[] = [];
 
   constructor(
@@ -25,21 +25,17 @@ export class BoxComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.batchOpen)
+    // chiamata per vedere se ci sono scatole aperte
     this.batchBoxService.getBox().subscribe(
-      box => {
-        if (box) {
-          this.boxOpen = true;
-        }
-      }
+      box => { if (box) { this.actualBox = box; console.log(this.actualBox); } }
     );
     this.createForm();
   }
 
   public addBox(): void {
     this.batchBoxService.addBox().subscribe(
-      data => console.log(data),
-      () => null,
-      () => this.boxOpen = true
+      box => this.actualBox = box,
     );
   }
 

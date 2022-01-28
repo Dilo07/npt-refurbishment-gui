@@ -14,9 +14,9 @@ export class WorkstationService {
   constructor(private http: HttpClient, @Inject('beUrl') private url: string) { }
 
   getWorkstation(key: string): Observable<Workstation> {
-    /*  return this.http.get<Workstation>(this.apiUrl + `/workstation/${key}`)
-       .pipe(catchError(err => { throw err; })); */
-    return of({ id: 1, description: 'test' });
+    return this.http.get<Workstation>(this.apiUrl + `workstation/${key}`)
+      .pipe(catchError(err => { throw err; }));
+    /* return of({ id: 1, description: 'test' }); */
     /* return of(null); */
   }
 }

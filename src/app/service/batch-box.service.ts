@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { HttpUtils } from '@npt/npt-template';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Batch, Box, Obu } from '../components/domain/domain';
@@ -26,14 +27,24 @@ export class BatchBoxService {
 
   // ritorna una scatola se è aperta altrimenti null se nessuna scatola è aperta
   getBox(): Observable<Box> {
-    return this.http.get<Box>(this.apiUrl + 'box')
+    const guId = localStorage.getItem('guId');
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      params: HttpUtils.createHttpParams({ ws: guId })
+    };
+    return this.http.get<Box>(this.apiUrl + 'box', options)
       .pipe(catchError(err => { throw err; }));
     /* return of(); */
     /* this.boxMokup */
   }
 
   addBox(): Observable<Box> {
-    return this.http.post<Box>(this.apiUrl + '/box', null)
+    const guId = localStorage.getItem('guId');
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      params: HttpUtils.createHttpParams({ ws: guId })
+    };
+    return this.http.post<Box>(this.apiUrl + '/box', null, options)
       .pipe(catchError(err => { throw err; }));
     /* return of(this.boxMokup); */
   }
@@ -44,7 +55,12 @@ export class BatchBoxService {
   }
 
   addObu(obu: Obu): Observable<Box> {
-    return this.http.post<Box>(this.apiUrl + 'obu', obu)
+    const guId = localStorage.getItem('guId');
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      params: HttpUtils.createHttpParams({ ws: guId })
+    };
+    return this.http.post<Box>(this.apiUrl + 'obu', obu, options)
       .pipe(catchError(err => { throw err; }));
   }
 }
