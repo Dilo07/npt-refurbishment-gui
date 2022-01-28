@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.setI18n();
-    console.log('postazione ' + localStorage.getItem('guid'));
+    console.log('postazione ' + localStorage.getItem('guId'));
   }
 
   private setI18n(): void {
