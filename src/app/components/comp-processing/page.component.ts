@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SnackBar } from '@npt/npt-template';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Batch, Hardware } from '../domain/domain';
 
@@ -18,6 +19,7 @@ export class PageProcessingComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private batchBoxService: BatchBoxService,
+    private snackBar: SnackBar,
     @Inject('batchDefaultData') private batchDefault: string
   ) { }
 
@@ -46,7 +48,9 @@ export class PageProcessingComponent implements OnInit {
     console.log(formBatch);
     // invia il lotto e cambia componente nella view
     this.batchBoxService.addBatch(formBatch).subscribe(
-      (lot) => this.activeBatch.push(lot)
+      (lot) => this.activeBatch.push(lot),
+      () => null,
+      () => this.snackBar.showMessage('PROCESSING.BATCH_CREATE', 'INFO')
     );
   }
 

@@ -45,11 +45,14 @@
         "BOX": "N. scatole",
         "INSERT_BOX": "Inserisci numero scatole",
         "HARDWARE": "Inserisci il tipo di device",
-        "OPEN_BATCH": "Avvia lotto"
+        "OPEN_BATCH": "Avvia lotto",
+        "BATCH_CREATE": "Lotto creato correttamente"
     },
     "BOX":{
         "TITLE": "Lavorazione scatola",
         "ADD": "Aggiungi obu",
+        "ADD_BOX": "Scatola creata",
+        "ADD_OBU": "Obu aggiunto",
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",

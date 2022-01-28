@@ -41,12 +41,20 @@
                 {{'BOX.ADD' | translate}}
             </button>
         </div>
-        <mat-card-title>Obu Inseriti</mat-card-title>
-        <div fxLayout="row wrap" fxLayoutGap="50px">
-            <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of listObu">
-                <mat-icon>tablet</mat-icon>
-                <h4>{{item.obuId}}</h4>
-            </div>
-        </div>
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+                    <mat-panel-description>
+                        Obu Inseriti
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="50px">
+                    <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of listObu">
+                        <mat-icon>tablet</mat-icon>
+                        <h4>{{item.obuId}}</h4>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
     </ng-template>
 </mat-card-content>
