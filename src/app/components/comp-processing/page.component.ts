@@ -22,11 +22,10 @@ export class PageProcessingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.createForm();
     this.batchBoxService.getLotList(true).subscribe(
       list => {
-        if (list.length === 0) {
-          this.createForm();
-        } else {
+        if (list.length > 0) {
           this.activeBatch = list;
           this.batchOpen = true;
         }
@@ -44,6 +43,9 @@ export class PageProcessingComponent implements OnInit {
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
     console.log(formBatch);
+    this.batchBoxService.addBatch(formBatch).subscribe(
+      (lot) => this.activeBatch.push(lot)
+    );
   }
 
   private createForm(): void {

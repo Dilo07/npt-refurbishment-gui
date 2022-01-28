@@ -2,7 +2,7 @@
   "keycloak_url": "https://n4800038.gruppo.autostrade.it",
   "keycloak_realm": "ssm-aspi-dev-realm",
   "keycloak_clientId": "ssm-aspi-locale-id",
-  "be_url": "http://localhost:9100",
+  "be_url": "http://localhost:9094",
   "context_app": "",
   "viewOuter" : false,
   "flow_implicit": false,

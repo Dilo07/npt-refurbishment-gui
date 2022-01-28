@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
-import { Batch } from '../../domain/domain';
+import { Batch, Obu } from '../../domain/domain';
 
 @Component({
   selector: 'app-box',
@@ -44,11 +44,20 @@ export class BoxComponent implements OnInit {
   }
 
   public addObu(): void {
-    this.listObu.push({ obuId: this.formGroup.get('ctrlObuId').value, iccId: this.formGroup.get('ctrlIccId').value });
-    this.formGroup.patchValue({
-      ctrlObuId: '',
-      ctrlIccId: ''
-    });
+    const obu = new Obu();
+    obu.extendedObuId = this.formGroup.get('ctrlObuId').value;
+    obu.iccId = this.formGroup.get('ctrlIccId').value;
+    this.batchBoxService.addObu(obu).subscribe(
+      data => console.log(data),
+      () => null,
+      () => {
+        this.listObu.push({ obuId: this.formGroup.get('ctrlObuId').value, iccId: this.formGroup.get('ctrlIccId').value });
+        this.formGroup.patchValue({
+          ctrlObuId: '',
+          ctrlIccId: ''
+        });
+      }
+    );
   }
 
   private createForm(): void {

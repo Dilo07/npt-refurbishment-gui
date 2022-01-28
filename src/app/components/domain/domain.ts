@@ -29,7 +29,14 @@ export interface Box {
   dateClose: Date;
 }
 
-export interface Workstation{
+export interface Workstation {
   id: number;
   description: string;
+}
+
+export class Obu {
+  id: number;
+  extendedObuId: string;
+  iccId: string;
+  dateIns: Date;
 }
