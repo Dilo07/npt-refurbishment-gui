@@ -8,7 +8,9 @@ export const lotList: Batch[] = [
     boxNumber: 1,
     boxSize: 1,
     countOpenBox: 1,
+    countOpenBoxPercentage: 1,
     countClosedBox: 1,
+    countClosedBoxPercentage: 1,
     dateIns: new Date(),
     dateClose: new Date()
   }

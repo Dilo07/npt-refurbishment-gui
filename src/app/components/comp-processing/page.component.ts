@@ -53,6 +53,11 @@ export class PageProcessingComponent implements OnInit {
     );
   }
 
+  public closeBatch(): void{
+    this.batchOpen = false;
+    this.snackBar.showMessage('PROCESSING.BATCH_END', 'INFO');
+  }
+
   private createForm(): void {
     this.formGroup = this.formBuilder.group({
       ctrlBatch1: ['', Validators.required],

@@ -5,7 +5,9 @@ export class Batch {
   boxNumber: number;
   boxSize: number;
   countOpenBox: number;
+  countOpenBoxPercentage: number;
   countClosedBox: number;
+  countClosedBoxPercentage: number;
   dateIns: Date;
   dateClose: Date;
 }

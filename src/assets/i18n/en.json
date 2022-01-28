@@ -48,13 +48,15 @@
         "INSERT_BOX_SIZE": "Insert obu # for box",
         "HARDWARE": "Insert type device",
         "OPEN_BATCH": "Start batch",
-        "BATCH_CREATE": "Batch correctly created"
+        "BATCH_CREATE": "Batch correctly created",
+        "BATCH_END": "Batch terminated"
     },
     "BOX":{
         "TITLE": "Box processing",
-        "ADD": "Add obu",
-        "ADD_BOX": "Box created",
-        "ADD_OBU": "Obu added",
+        "ADD_BOX": "Add box scatola",
+        "ADD_OBU": "Add obu",
+        "ADD_BOX_SUCCESS": "Box created",
+        "ADD_OBU_SUCCESS": "Obu added",
         "OBUID": "Insert obu Id",
         "INSERT_OBUID": "Insert a correct obu id",
         "ICCID": "Insert icc Id",

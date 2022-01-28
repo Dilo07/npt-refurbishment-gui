@@ -48,13 +48,15 @@
         "INSERT_BOX_SIZE": "Inserisci n. obu per scatola",
         "HARDWARE": "Inserisci il tipo di device",
         "OPEN_BATCH": "Avvia lotto",
-        "BATCH_CREATE": "Lotto creato correttamente"
+        "BATCH_CREATE": "Lotto creato correttamente",
+        "BATCH_END": "Lotto terminato"
     },
     "BOX":{
         "TITLE": "Lavorazione scatola",
-        "ADD": "Aggiungi obu",
-        "ADD_BOX": "Scatola creata",
-        "ADD_OBU": "Obu aggiunto",
+        "ADD_BOX": "Aggiungi scatola",
+        "ADD_OBU": "Aggiungi obu",
+        "ADD_BOX_SUCCESS": "Scatola creata",
+        "ADD_OBU_SUCCESS": "Obu aggiunto",
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",

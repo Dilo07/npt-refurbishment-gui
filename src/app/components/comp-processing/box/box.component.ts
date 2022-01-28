@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackBar } from '@npt/npt-template';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
@@ -15,6 +15,7 @@ import { Batch, Box, Obu } from '../../domain/domain';
   ]
 })
 export class BoxComponent implements OnInit {
+  @Output() public batchTerminate = new EventEmitter<null>();
   @Input() batchOpen: Batch[] = [];
   public actualBox: Box;
   public formGroup: FormGroup;
@@ -28,9 +29,10 @@ export class BoxComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.batchOpen);
     // chiamata per vedere se ci sono scatole aperte
     this.batchBoxService.getBox().subscribe(
-      box => { if (box) { this.actualBox = box; } }
+      box => { if (box) { this.actualBox = box; console.log(this.actualBox); } }
     );
     this.createForm();
   }
@@ -40,8 +42,8 @@ export class BoxComponent implements OnInit {
       box => this.actualBox = box,
       () => null,
       () => {
-        this.batchOpen[0].countOpenBox ++;
-        this.snackBar.showMessage('BOX.ADD_BOX', 'INFO');
+        this.batchOpen[0].countOpenBox++;
+        this.snackBar.showMessage('BOX.ADD_BOX_SUCCESS', 'INFO');
       }
     );
   }
@@ -51,15 +53,22 @@ export class BoxComponent implements OnInit {
     obu.extendedObuId = this.formGroup.get('ctrlObuId').value;
     obu.iccId = this.formGroup.get('ctrlIccId').value;
     this.batchBoxService.addObu(obu).subscribe(
-      box => this.actualBox = box,
+      box => {
+        if (!box) {
+          this.batchTerminate.emit();
+        }
+        this.actualBox = box;
+      },
       () => null,
       () => {
-        this.listObu.push({ obuId: this.formGroup.get('ctrlObuId').value, iccId: this.formGroup.get('ctrlIccId').value });
-        this.formGroup.patchValue({
-          ctrlObuId: '',
-          ctrlIccId: ''
-        });
-        this.snackBar.showMessage('BOX.ADD_OBU', 'INFO');
+        if (this.actualBox) {
+          this.listObu.push({ obuId: this.formGroup.get('ctrlObuId').value, iccId: this.formGroup.get('ctrlIccId').value });
+          this.formGroup.patchValue({
+            ctrlObuId: '',
+            ctrlIccId: ''
+          });
+          this.snackBar.showMessage('BOX.ADD_OBU_SUCCESS', 'INFO');
+        }
       }
     );
   }
