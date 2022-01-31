@@ -1,22 +1,24 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackBar } from '@npt/npt-template';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Batch, Hardware } from '../domain/domain';
 
 @Component({
   selector: 'app-page',
-  templateUrl: './page.component.html',
+  templateUrl: './batch.component.html',
   styles: [
   ]
 })
-export class PageProcessingComponent implements OnInit {
+export class BatchComponent implements OnInit, OnDestroy {
   public batchOpen: boolean;
   public formGroup: FormGroup;
   public allHardware = [Hardware['arianna I'], Hardware['arianna II'], Hardware['even x'], Hardware['obu Go']];
   public activeBatch: Batch[] = [];
   public complete = true;
+
+  private subscription: Subscription[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,24 +32,30 @@ export class PageProcessingComponent implements OnInit {
     this.getBatch();
   }
 
-  public getBatch(verify?: boolean): void {
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
+
+  public getBatch(verifyEnd?: boolean): void {
     this.complete = false;
     // chiamata per vedere se ci sono lotti aperti
-    this.batchBoxService.getLotList(true).subscribe(
+    this.subscription.push(this.batchBoxService.getLotList(true).subscribe(
       list => {
         if (list.length > 0) {
           this.activeBatch = list;
           this.batchOpen = true;
         } else {
           this.batchOpen = false;
-          if (verify) {
+          if (verifyEnd) {
             this.snackBar.showMessage('PROCESSING.BATCH_END', 'INFO');
           }
         }
       },
       () => this.complete = true,
       () => this.complete = true
-    );
+    ));
   }
 
   public addBatch(): void {
@@ -60,11 +68,11 @@ export class PageProcessingComponent implements OnInit {
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
     // invia il lotto e cambia componente nella view
-    this.batchBoxService.addBatch(formBatch).subscribe(
+    this.subscription.push(this.batchBoxService.addBatch(formBatch).subscribe(
       (lot) => this.activeBatch.push(lot),
       () => null,
       () => this.snackBar.showMessage('PROCESSING.BATCH_CREATE', 'INFO')
-    );
+    ));
   }
 
   private createForm(): void {

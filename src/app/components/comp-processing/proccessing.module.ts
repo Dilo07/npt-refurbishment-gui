@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { BoxRoutingModule } from './processing.routing';
 import { BoxComponent } from './box/box.component';
-import { PageProcessingComponent } from './page.component';
+import { BatchComponent } from './batch.component';
 import { MaterialModule } from '@npt/npt-template';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ import { ObuComponent } from './obu/obu.component';
 @NgModule({
   declarations: [
     BoxComponent,
-    PageProcessingComponent,
+    BatchComponent,
     ObuComponent
   ],
   imports: [

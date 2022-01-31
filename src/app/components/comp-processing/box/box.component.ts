@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackBar } from '@npt/npt-template';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Batch, Box, Obu } from '../../domain/domain';
@@ -28,7 +27,7 @@ export class BoxComponent implements OnInit {
   ngOnInit(): void {
     // chiamata per vedere se ci sono scatole aperte
     this.batchBoxService.getBox().subscribe(
-      box => { if (box) { this.actualBox = box; console.log(this.actualBox); } }
+      box => { if (box) { this.actualBox = box; } }
     );
   }
 
@@ -46,7 +45,6 @@ export class BoxComponent implements OnInit {
   public addObu(obu: Obu): void {
     this.batchBoxService.addObu(obu).subscribe(
       box => {
-        console.log(box);
         if (!box) {
           this.boxTerminate.emit();
         }
