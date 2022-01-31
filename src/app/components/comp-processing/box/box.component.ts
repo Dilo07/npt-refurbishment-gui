@@ -15,7 +15,7 @@ import { Batch, Box, Obu } from '../../domain/domain';
   ]
 })
 export class BoxComponent implements OnInit {
-  @Output() public batchTerminate = new EventEmitter<null>();
+  @Output() public boxTerminate = new EventEmitter<null>();
   @Input() batchOpen: Batch[] = [];
   public actualBox: Box;
   public panelOpenState = false;
@@ -48,7 +48,7 @@ export class BoxComponent implements OnInit {
       box => {
         console.log(box);
         if (!box) {
-          this.batchTerminate.emit();
+          this.boxTerminate.emit();
         }
         this.actualBox = box;
       },

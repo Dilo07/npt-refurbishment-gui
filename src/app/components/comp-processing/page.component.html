@@ -50,7 +50,7 @@
             </div>
         </div>
         <ng-template #box>
-            <app-box [batchOpen]="activeBatch" (batchTerminate)="closeBatch()"></app-box>
+            <app-box [batchOpen]="activeBatch" (boxTerminate)="getBatch(true)"></app-box>
         </ng-template>
     </mat-card-content>
 </mat-card>

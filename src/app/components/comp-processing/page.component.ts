@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackBar } from '@npt/npt-template';
+import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Batch, Hardware } from '../domain/domain';
 
@@ -11,7 +12,7 @@ import { Batch, Hardware } from '../domain/domain';
   ]
 })
 export class PageProcessingComponent implements OnInit {
-  public batchOpen = false;
+  public batchOpen: boolean;
   public formGroup: FormGroup;
   public allHardware = [Hardware['arianna I'], Hardware['arianna II'], Hardware['even x'], Hardware['obu Go']];
   public activeBatch: Batch[] = [];
@@ -26,6 +27,10 @@ export class PageProcessingComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getBatch();
+  }
+
+  public getBatch(verify?: boolean): void {
     this.complete = false;
     // chiamata per vedere se ci sono lotti aperti
     this.batchBoxService.getLotList(true).subscribe(
@@ -33,6 +38,11 @@ export class PageProcessingComponent implements OnInit {
         if (list.length > 0) {
           this.activeBatch = list;
           this.batchOpen = true;
+        } else {
+          this.batchOpen = false;
+          if (verify) {
+            this.snackBar.showMessage('PROCESSING.BATCH_END', 'INFO');
+          }
         }
       },
       () => this.complete = true,
@@ -55,11 +65,6 @@ export class PageProcessingComponent implements OnInit {
       () => null,
       () => this.snackBar.showMessage('PROCESSING.BATCH_CREATE', 'INFO')
     );
-  }
-
-  public closeBatch(): void{
-    this.batchOpen = false;
-    this.snackBar.showMessage('PROCESSING.BATCH_END', 'INFO');
   }
 
   private createForm(): void {
