@@ -18,23 +18,18 @@ export class BoxComponent implements OnInit {
   @Output() public batchTerminate = new EventEmitter<null>();
   @Input() batchOpen: Batch[] = [];
   public actualBox: Box;
-  public formGroup: FormGroup;
-  public listObu: { obuId: string; iccId: string }[] = [];
   public panelOpenState = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private snackBar: SnackBar,
     private batchBoxService: BatchBoxService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.batchOpen);
     // chiamata per vedere se ci sono scatole aperte
     this.batchBoxService.getBox().subscribe(
       box => { if (box) { this.actualBox = box; console.log(this.actualBox); } }
     );
-    this.createForm();
   }
 
   public addBox(): void {
@@ -48,12 +43,10 @@ export class BoxComponent implements OnInit {
     );
   }
 
-  public addObu(): void {
-    const obu = new Obu();
-    obu.extendedObuId = this.formGroup.get('ctrlObuId').value;
-    obu.iccId = this.formGroup.get('ctrlIccId').value;
+  public addObu(obu: Obu): void {
     this.batchBoxService.addObu(obu).subscribe(
       box => {
+        console.log(box);
         if (!box) {
           this.batchTerminate.emit();
         }
@@ -62,22 +55,10 @@ export class BoxComponent implements OnInit {
       () => null,
       () => {
         if (this.actualBox) {
-          this.listObu.push({ obuId: this.formGroup.get('ctrlObuId').value, iccId: this.formGroup.get('ctrlIccId').value });
-          this.formGroup.patchValue({
-            ctrlObuId: '',
-            ctrlIccId: ''
-          });
           this.snackBar.showMessage('BOX.ADD_OBU_SUCCESS', 'INFO');
         }
       }
     );
-  }
-
-  private createForm(): void {
-    this.formGroup = this.formBuilder.group({
-      ctrlObuId: ['', [Validators.minLength(24), Validators.maxLength(24)]],
-      ctrlIccId: ['', [Validators.minLength(20), Validators.maxLength(20)]]
-    });
   }
 
 }

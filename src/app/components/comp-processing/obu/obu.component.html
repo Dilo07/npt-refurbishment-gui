@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutGap="40px">
+    <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                <mat-label>{{'BOX.OBUID' | translate}}</mat-label>
+                <input matInput type="text" formControlName="ctrlObuId" required>
+                <mat-error>{{'BOX.INSERT_OBUID' | translate}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+                <mat-label>{{'BOX.ICCID' | translate}}</mat-label>
+                <input matInput type="text" formControlName="ctrlIccId" required>
+                <mat-error>{{'BOX.INSERT_ICCID' | translate}}</mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button class="greenButton" [disabled]="formGroup.invalid" (click)="addObu()">
+            {{'BOX.ADD_OBU' | translate}}
+        </button>
+    </div>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header [collapsedHeight]="'80px'" [expandedHeight]="'80px'">
+                <mat-panel-description>
+                    Obu Inseriti
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="50px">
+                <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of actualBox.obuList">
+                    <mat-icon>tablet</mat-icon>
+                    <h4>{{item.extendedObuId}}</h4>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -8,12 +8,14 @@ import { MaterialModule } from '@npt/npt-template';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ObuComponent } from './obu/obu.component';
 
 
 @NgModule({
   declarations: [
     BoxComponent,
-    PageProcessingComponent
+    PageProcessingComponent,
+    ObuComponent
   ],
   imports: [
     CommonModule,
