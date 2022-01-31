@@ -29,6 +29,7 @@ export interface Box {
   count: number;
   dateIns: Date;
   dateClose: Date;
+  countPercentage: number;
 }
 
 export interface Workstation {

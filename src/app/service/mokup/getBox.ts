@@ -10,5 +10,6 @@ export const box: Box = {
   count: 1,
   dateIns: new Date(),
   dateClose: new Date(),
+  countPercentage: 8
 };
 

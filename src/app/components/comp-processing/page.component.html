@@ -1,5 +1,6 @@
 <mat-card>
     <mat-card-content>
+        <mat-progress-bar mode="indeterminate" *ngIf="!complete"></mat-progress-bar>
         <div *ngIf="!batchOpen else box">
             <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.TITLE' | translate}}</mat-card-title>
             <mat-card-subtitle fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.NEW_BATCH' | translate}}</mat-card-subtitle>

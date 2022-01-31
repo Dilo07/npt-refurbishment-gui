@@ -15,6 +15,7 @@ export class PageProcessingComponent implements OnInit {
   public formGroup: FormGroup;
   public allHardware = [Hardware['arianna I'], Hardware['arianna II'], Hardware['even x'], Hardware['obu Go']];
   public activeBatch: Batch[] = [];
+  public complete = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,6 +26,7 @@ export class PageProcessingComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.complete = false;
     // chiamata per vedere se ci sono lotti aperti
     this.batchBoxService.getLotList(true).subscribe(
       list => {
@@ -32,7 +34,9 @@ export class PageProcessingComponent implements OnInit {
           this.activeBatch = list;
           this.batchOpen = true;
         }
-      }
+      },
+      () => this.complete = true,
+      () => this.complete = true
     );
   }
 
