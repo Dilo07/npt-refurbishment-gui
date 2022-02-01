@@ -52,7 +52,13 @@
         "BATCH_END": "Lotto terminato"
     },
     "BOX":{
+        "BOX": "Scatola",
+        "BOX_OPEN": "Scatole aperte",
         "TITLE": "Lavorazione scatola",
+        "BATCH_N": "Lotto",
+        "NUM": "Numero scatole",
+        "OBU_N": "Obu per scatola",
+        "OBU_INSERT": "Obu inseriti nella scatola",
         "ADD_BOX": "Aggiungi scatola",
         "ADD_OBU": "Aggiungi obu",
         "ADD_BOX_SUCCESS": "Scatola creata",
@@ -60,7 +66,9 @@
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",
-        "INSERT_ICCID": "Inserisci un icc id corretto"
+        "INSERT_ICCID": "Inserisci un icc id corretto",
+        "CLOUSURE": "Chiusura scatola automatica",
+        "OPENING": "Apertura scatola automatica"
     },
     "HARDWARE": {
         "1": "Obu Go",

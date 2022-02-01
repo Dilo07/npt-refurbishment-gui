@@ -52,7 +52,13 @@
         "BATCH_END": "Batch terminated"
     },
     "BOX":{
+        "BOX": "Box",
+        "BOX_OPEN": "Box open",
         "TITLE": "Box processing",
+        "BATCH_N": "Lot number",
+        "NUM": "Box number",
+        "OBU_N": "Obu in box",
+        "OBU_INSERT": "Obu inserted on box",
         "ADD_BOX": "Add box scatola",
         "ADD_OBU": "Add obu",
         "ADD_BOX_SUCCESS": "Box created",
@@ -60,7 +66,9 @@
         "OBUID": "Insert obu Id",
         "INSERT_OBUID": "Insert a correct obu id",
         "ICCID": "Insert icc Id",
-        "INSERT_ICCID": "Insert a correct icc id" 
+        "INSERT_ICCID": "Insert a correct icc id",
+        "CLOUSURE": "Automatic clousure box",
+        "OPENING": "Automatic open box"
     },
     "HARDWARE": {
         "1": "Obu Go",
