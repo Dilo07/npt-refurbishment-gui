@@ -1,2 +1,38 @@
-<p fxLayout="row" fxLayoutAlign="center center"> workstation non trovata</p>
-
+<mat-card>
+    <mat-card-title fxLayout="row" fxLayoutAlign="center"> Workstation non censinta</mat-card-title>
+    <mat-card-subtitle fxLayout="row" fxLayoutAlign="center"> Se vuoi censire una Workstation segui i seguenti passi:
+    </mat-card-subtitle>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <p mat-line>Installa l'estensione Chrome AmIUnique e abilitala.</p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>Una volta installata vai nel sito
+                    <a target="_blank" href="https://amiunique.org">Amiunique</a>
+                    ed entra nel sotto menu My extension - My fingerprint stability
+                    e copia il valore del campo 'identifier of your extension'.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>Ritorna nell'app refusrbishment e apri il Devtools premendo f12 o premendo il tasto destro -
+                    ispeziona.
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>Spostati sulla scheda application, espandi la voce di sinistra Local storage ed entra nella
+                    prima voce.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>Clicca sotto la colonna Key ed aggiungi la chiave 'fingerId', mentre sotto la colonna value
+                    aggiungi
+                    l'd precedentemente copiato dal sito <a target="_blank" href="https://amiunique.org">Amiunique</a>.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>Infine invia una mail a {{mail}} con l'id inserito in modo da censire la postazione sui server.
+                </p>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

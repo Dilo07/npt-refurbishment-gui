@@ -39,6 +39,11 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     }),
   ],
   providers: [
+    { provide: 'mail', useValue: 'mail'},
+    {
+      provide: 'mailData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['mail', ConfigInitService]
+    },
     { provide: 'batchDefault', useValue: 'batchDefault'},
     {
       provide: 'batchDefaultData',

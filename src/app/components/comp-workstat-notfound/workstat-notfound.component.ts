@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-workstat-notfound',
@@ -6,11 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class WorkstatNotfoundComponent implements OnInit {
+export class WorkstatNotfoundComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(
+    @Inject('mailData') public mail: string
+  ) { }
 
 }
