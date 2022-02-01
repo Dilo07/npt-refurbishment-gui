@@ -7,7 +7,7 @@ import { Batch, Box, Obu } from '../../domain/domain';
   selector: 'app-box',
   templateUrl: './box.component.html',
   styles: [`
-  ::ng-deep .mat-progress-bar {
+  .mat-progress-bar {
     height: 10px !important;
   }
   `
@@ -18,6 +18,8 @@ export class BoxComponent implements OnInit {
   @Input() batchOpen: Batch[] = [];
   public actualBox: Box;
   public panelOpenState = false;
+  public opening = true;
+  public closure = true;
 
   constructor(
     private snackBar: SnackBar,
@@ -43,7 +45,7 @@ export class BoxComponent implements OnInit {
   }
 
   public addObu(obu: Obu): void {
-    this.batchBoxService.addObu(obu).subscribe(
+    this.batchBoxService.addObu(obu, this.closure, this.opening).subscribe(
       box => {
         if (!box) {
           this.boxTerminate.emit();

@@ -34,6 +34,10 @@
         <button mat-button class="greenButton" (click)="addBox();"> {{'BOX.ADD_BOX' | translate}}</button>
     </div>
     <ng-template #open>
+        <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+            <mat-checkbox [(ngModel)]="closure">Chiusura scatola automatica</mat-checkbox>
+            <mat-checkbox [(ngModel)]="opening">Apertura scatola automatica</mat-checkbox>
+        </section>
         <app-obu [actualBox]="actualBox" (addObuEvent)="addObu($event);"></app-obu>
     </ng-template>
 </mat-card-content>

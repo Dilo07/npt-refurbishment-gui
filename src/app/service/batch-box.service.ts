@@ -54,11 +54,11 @@ export class BatchBoxService {
       .pipe(catchError(err => { throw err; }));
   }
 
-  addObu(obu: Obu): Observable<Box> {
+  addObu(obu: Obu, closure: boolean, opening: boolean): Observable<Box> {
     const guId = localStorage.getItem('guId');
     const options = {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      params: HttpUtils.createHttpParams({ ws: guId })
+      params: HttpUtils.createHttpParams({ ws: guId, close: closure, open: opening })
     };
     return this.http.post<Box>(this.apiUrl + 'obu', obu, options)
       .pipe(catchError(err => { throw err; }));
