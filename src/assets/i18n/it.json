@@ -8,7 +8,8 @@
     },
     "MENU": {
         "Dashboard": "Dashboard",
-        "Processing": "Lavorazione"
+        "Processing": "Lavorazione",
+        "Historic": "Storico"
     },
     "ACCOUNT": {
         "PROFILE": "Profilo",

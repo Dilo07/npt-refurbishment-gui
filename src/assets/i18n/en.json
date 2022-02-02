@@ -8,7 +8,8 @@
     },
     "MENU": {
         "Dashboard": "Dashboard",
-        "Processing": "Processing"
+        "Processing": "Processing",
+        "Historic": "Historic"
     },
     "ACCOUNT": {
         "PROFILE": "Profile",

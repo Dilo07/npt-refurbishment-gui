@@ -18,6 +18,9 @@ const MENUITEMS = [
   },
   {
     state: 'processing', name: 'Processing', type: 'link', icon: 'inventory_2', children: [], roles: []
+  },
+  {
+    state: 'historic', name: 'Historic', type: 'link', icon: 'history', children: [], roles: []
   }
 ];
 
