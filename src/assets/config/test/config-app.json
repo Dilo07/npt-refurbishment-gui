@@ -1,7 +1,4 @@
 {
-  "keycloak_url": "https://n4800038.gruppo.autostrade.it",
-  "keycloak_realm": "ssm-aspi-dev-realm",
-  "keycloak_clientId": "ssm-aspi-locale-id",
   "be_url": "http://localhost:9094",
   "context_app": "",
   "viewOuter" : false,
@@ -9,13 +6,13 @@
   "batchDefault": "50014",
   "mail": "ciro.autiero@movyon.com",
   "no_auth": {
-    "roles": ["driver", "opmovyon", "installer", "movyon", "fleet"],
+    "roles": [],
     "user": {
       "id": "myID",
       "username": "TEST USERNAME",
       "email": "movyon@movyon.it",
       "firstName": "movyon",
-      "lastName": "movyon",
+      "lastName": "",
       "enabled": true,
       "emailVerified": true
     }
