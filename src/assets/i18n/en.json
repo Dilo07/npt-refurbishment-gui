@@ -59,6 +59,7 @@
         "NUM": "Box number",
         "OBU_N": "Obu in box",
         "OBU_INSERT": "Obu inserted on box",
+        "NO_OBU": "Nobody obu on box",
         "ADD_BOX": "Add box scatola",
         "ADD_OBU": "Add obu",
         "ADD_BOX_SUCCESS": "Box created",

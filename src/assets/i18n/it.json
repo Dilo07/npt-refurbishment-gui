@@ -59,6 +59,7 @@
         "NUM": "Numero scatole",
         "OBU_N": "Obu per scatola",
         "OBU_INSERT": "Obu inseriti nella scatola",
+        "NO_OBU": "Nessun obu nella scatola",
         "ADD_BOX": "Aggiungi scatola",
         "ADD_OBU": "Aggiungi obu",
         "ADD_BOX_SUCCESS": "Scatola creata",

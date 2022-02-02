@@ -25,6 +25,7 @@
                     <mat-icon>tablet</mat-icon>
                     <h4>{{item.extendedObuId}}</h4>
                 </div>
+                <p *ngIf="actualBox.obuList.length === 0">{{'BOX.NO_OBU' | translate}}</p>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
