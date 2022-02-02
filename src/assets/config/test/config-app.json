@@ -4,6 +4,7 @@
   "viewOuter" : false,
   "flow_implicit": false,
   "batchDefault": "50014",
+  "hideProfile": true,
   "mail": "ciro.autiero@movyon.com",
   "no_auth": {
     "roles": [],

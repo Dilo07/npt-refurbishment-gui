@@ -49,6 +49,11 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
       provide: 'batchDefaultData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['batchDefault', ConfigInitService]
     },
+    { provide: 'hideProfile', useValue: 'hideProfile' },
+    {
+      provide: 'hideProfileData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['hideProfile', ConfigInitService]
+    },
     // npt template
     { provide: 'menuService', useClass: MenuItemService },
     { provide: 'header', useValue: environment.header },
