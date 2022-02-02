@@ -45,6 +45,7 @@
         "@typescript-eslint/no-inferrable-types": "warn",
         "@angular-eslint/no-empty-lifecycle-method": "warn",
         "@typescript-eslint/member-delimiter-style": "warn",
+        "eol-last": "warn",
         "prefer-const": "warn",
         "max-len": "warn",
         "prefer-arrow/prefer-arrow-functions": "warn",
