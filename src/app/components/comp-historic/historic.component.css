@@ -4,27 +4,31 @@ table {
 }
 
 .mat-column-expandButton {
-    max-width: 1%;
+    width: 8%;
 }
 
 .mat-column-id {
-    max-width: 19%;
+    width: 10% !;
 }
 
 .mat-column-lotNumber {
-    max-width: 20%
+    width: 20%
 }
 
 .mat-column-hardware {
-    max-width: 20%;
+    width: 20%;
 }
 
 .mat-column-dateIns {
-    max-width: 20%;
+    width: 20%;
 }
 
 .mat-column-dateClose {
-    max-width: 20%;
+    width: 20%;
+}
+
+.mat-column-action {
+  width: 2%;
 }
 
 tr.example-detail-row {

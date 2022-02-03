@@ -33,6 +33,7 @@ export interface Box {
   dateClose: Date;
   countPercentage: number;
   obuList: Obu[];
+  dateLabel: Date;
 }
 
 export interface Workstation {

@@ -30,6 +30,9 @@
     "ERROR": {
         "BE_ERROR": "Servizi non raggiungibili"
     },
+    "error": {
+        "generic": "Errore lato server"
+    },
     "PAGINATOR": {
         "ITEM": "Elementi per pagina",
         "NEXT_PAGE": "Pagina successiva",

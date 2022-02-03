@@ -4,7 +4,6 @@ import { HttpUtils } from '@npt/npt-template';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Batch, Box, Obu } from '../components/domain/domain';
-import { box } from './mokup/getBox';
 import { lotList } from './mokup/getLotList';
 
 @Injectable({
@@ -13,7 +12,6 @@ import { lotList } from './mokup/getLotList';
 export class BatchBoxService {
   private apiUrl = this.url + '/api/';
   private lotListMokup = lotList;
-  private boxMokup = box;
 
   constructor(private http: HttpClient, @Inject('beUrl') private url: string) { }
 
@@ -47,7 +45,6 @@ export class BatchBoxService {
     };
     return this.http.post<Box>(this.apiUrl + '/box', null, options)
       .pipe(catchError(err => { throw err; }));
-    /* return of(this.boxMokup); */
   }
 
   addBatch(lot: Batch): Observable<Batch> {
@@ -79,6 +76,21 @@ export class BatchBoxService {
 
   getBoxList(id: number): Observable<Box[]> {
     return this.http.get<Box[]>(this.apiUrl + `/lot/${id}/box/list`)
+      .pipe(catchError(err => { throw err; }));
+  }
+
+  genLotXML(id: number): Observable<void> {
+    return this.http.put<void>(this.http + `/lot/${id}/xml`, null)
+      .pipe(catchError(err => { throw err; }));
+  }
+
+  getBoxLabel(id: number): Observable<void> {
+    return this.http.get<void>(this.http + `/box/${id}/label`)
+      .pipe(catchError(err => { throw err; }));
+  }
+
+  genBoxLabel(id: number): Observable<void> {
+    return this.http.put<void>(this.http + `/box/${id}/label`, null)
       .pipe(catchError(err => { throw err; }));
   }
 }

@@ -30,6 +30,9 @@
     "ERROR": {
         "BE_ERROR": "Unreachable services"
     },
+    "error": {
+        "generic": "Error server site"
+    },
     "PAGINATOR": {
         "ITEM": "Item for page",
         "NEXT_PAGE": "Next page",

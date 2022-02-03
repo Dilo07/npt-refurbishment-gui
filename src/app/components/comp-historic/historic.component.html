@@ -41,6 +41,15 @@
                 <td mat-cell *matCellDef="let element"> {{element.dateClose | date: 'dd/mm/YYYY HH:mm'}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button *ngIf="!element.dateGenXML">
+                        <mat-icon matTooltip="Invia xml">send</mat-icon>
+                    </button>    
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
                     <div class="example-element-detail"
@@ -65,6 +74,12 @@
                                             <h5>workstation</h5>
                                             <p>{{box.workstationId}}
                                         </div>
+                                        <div *ngIf="box.dateLabel else generate">
+                                            <button mat-icon-button><mat-icon matTooltip="Stampa">print</mat-icon></button>
+                                        </div>
+                                        <ng-template #generate>
+                                            <button mat-icon-button><mat-icon matTooltip="Genera">calculate</mat-icon></button>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </span>

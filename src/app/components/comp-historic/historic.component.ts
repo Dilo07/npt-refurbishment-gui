@@ -24,7 +24,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   public complete = true;
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
-  public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose'];
+  public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose', 'action'];
   public boxList: Box[] = [];
 
   private subscription: Subscription[] = [];
