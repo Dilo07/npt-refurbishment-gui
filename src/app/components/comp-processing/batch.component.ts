@@ -81,7 +81,7 @@ export class BatchComponent implements OnInit, OnDestroy {
   private createForm(sequence: string): void {
     const year = moment().year().toString().substring(2);
     this.formGroup = this.formBuilder.group({
-      ctrlSequence: [sequence + year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(6), Validators.maxLength(6)]],
+      ctrlSequence: [sequence, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(6), Validators.maxLength(6)]],
       ctrlYear: [year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(2), Validators.maxLength(2)]],
       ctrlSupc: [this.supplier, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(5), Validators.maxLength(5)]],
       ctrlHrdw: [Hardware['arianna I'], Validators.required],

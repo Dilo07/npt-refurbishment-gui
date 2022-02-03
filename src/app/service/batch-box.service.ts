@@ -24,7 +24,7 @@ export class BatchBoxService {
   }
 
   getLotSequence(yy: string): Observable<string> {
-    return this.http.get<string>(this.apiUrl + `/lot/${yy}/sequence`)
+    return this.http.get<string>(this.apiUrl + `lot/${yy}/sequence`)
       .pipe(catchError(err => { throw err; }));
   }
 
