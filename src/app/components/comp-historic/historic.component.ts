@@ -1,26 +1,15 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Batch } from '../domain/domain';
+import { Batch, Box } from '../domain/domain';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-historic',
   templateUrl: './historic.component.html',
-  styles: [`
-  table {
-  width: 100%;
-  background-color: aliceblue;
-  }
-  .mat-column-expandButton { max-width: 2px; }
-  .mat-column-id { max-width: 18%;}
-  .mat-column-lotNumber { max-width: 20%}
-  .mat-column-hardware { max-width: 20%}
-  .mat-column-dateIns { max-width: 20%}
-  .mat-column-dateClose { max-width: 20%}
-  `
-  ],
+  styleUrls: ['./historic.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -29,13 +18,16 @@ import { Batch } from '../domain/domain';
     ]),
   ],
 })
-export class HistoricComponent implements OnInit {
+export class HistoricComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public panelOpenState = false;
   public complete = true;
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose'];
+  public boxList: Box[] = [];
+
+  private subscription: Subscription[] = [];
 
   constructor(
     private batchBoxService: BatchBoxService
@@ -48,6 +40,20 @@ export class HistoricComponent implements OnInit {
       () => this.complete = true,
       () => this.complete = true
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
+
+  getBoxList(id: number): void {
+    this.subscription.push(this.batchBoxService.getBoxList(id).subscribe(
+      boxList => this.boxList = boxList,
+      () => null,
+      () => this.ngOnDestroy()
+    ));
   }
 
 }

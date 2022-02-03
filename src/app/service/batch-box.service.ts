@@ -73,4 +73,11 @@ export class BatchBoxService {
     return this.http.put<Box>(this.apiUrl + 'box/close', null, options)
       .pipe(catchError(err => { throw err; }));
   }
+
+  // historic
+
+  getBoxList(id: number): Observable<Box[]> {
+    return this.http.get<Box[]>(this.apiUrl + `/lot/${id}/box/list`)
+      .pipe(catchError(err => { throw err; }));
+  }
 }

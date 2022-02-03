@@ -85,4 +85,8 @@ export class BatchComponent implements OnInit, OnDestroy {
       ctrlBoxSize: [48, Validators.required]
     });
   }
+
+  private getLotSequence(): void{
+    
+  }
 }
