@@ -41,6 +41,7 @@
     "PROCESSING": {
         "TITLE": "Lavorazione lotto",
         "NEW_BATCH": "Inserisci le informazione del nuovo lotto",
+        "BATCH": "Lotto",
         "SUPC": "Supplier code",
         "INSERT_SUPC": "Inserisci un supplier code corretto",
         "SEQUENCE": "Sequenza",

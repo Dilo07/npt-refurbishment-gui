@@ -41,6 +41,7 @@
     "PROCESSING": {
         "TITLE": "Batch processing ",
         "NEW_BATCH": "Insert the informations of new batch",
+        "BATCH": "Batch",
         "SUPC": "Supplier code",
         "INSERT_SUPC": "Insert a correct supplier code",
         "SEQUENCE": "Sequence",
