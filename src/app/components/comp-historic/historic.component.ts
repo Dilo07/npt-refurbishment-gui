@@ -35,11 +35,11 @@ export class HistoricComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.complete = false;
-    this.batchBoxService.getLotList(false).subscribe(
+    this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
       lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
       () => this.complete = true,
       () => this.complete = true
-    );
+    ));
   }
 
   ngOnDestroy(): void {

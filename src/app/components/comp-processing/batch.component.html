@@ -7,22 +7,22 @@
             <div *ngIf="!batchOpen else box">
                 <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.TITLE' | translate}}</mat-card-title>
                 <mat-card-subtitle fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.NEW_BATCH' | translate}}</mat-card-subtitle>
-                <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
+                <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px" *ngIf="formGroup">
                     <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
                         <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
-                            <mat-label>{{'PROCESSING.BATCH' | translate}}</mat-label>
-                            <input matInput type="text" formControlName="ctrlBatch1" required>
-                            <mat-error>{{'PROCESSING.INSERT_BATCH' | translate}}</mat-error>
+                            <mat-label>{{'PROCESSING.SEQUENCE' | translate}}</mat-label>
+                            <input matInput type="text" formControlName="ctrlSequence" required>
+                            <mat-error>{{'PROCESSING.INSERT_SEQUENCE' | translate}}</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
-                            <mat-label>{{'PROCESSING.BATCH' | translate}}</mat-label>
-                            <input matInput type="text" formControlName="ctrlBatch2" required>
-                            <mat-error>{{'PROCESSING.INSERT_BATCH' | translate}}</mat-error>
+                            <mat-label>{{'PROCESSING.YEAR' | translate}}</mat-label>
+                            <input matInput type="text" formControlName="ctrlYear" required>
+                            <mat-error>{{'PROCESSING.INSERT_YEAR' | translate}}</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
-                            <mat-label>{{'PROCESSING.BATCH' | translate}}</mat-label>
-                            <input matInput type="text" formControlName="ctrlBatch3" required>
-                            <mat-error>{{'PROCESSING.INSERT_BATCH' | translate}}</mat-error>
+                            <mat-label>{{'PROCESSING.SUPC' | translate}}</mat-label>
+                            <input matInput type="text" formControlName="ctrlSupc" required>
+                            <mat-error>{{'PROCESSING.INSERT_SUPC' | translate}}</mat-error>
                         </mat-form-field>
                     </div>
                     <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
@@ -45,12 +45,13 @@
                             <mat-error>{{'PROCESSING.INSERT_BOX_SIZE' | translate}}</mat-error>
                         </mat-form-field>
                     </div>
+                    <mat-error *ngIf="formGroup.hasError('yearValidator')" fxLayout="row" fxLayoutAlign="center">{{'PROCESSING.ERROR_YEAR' | translate}}</mat-error>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-button class="greenButton" [disabled]="formGroup?.invalid" (click)="addBatch(); batchOpen = true">
+                            {{'PROCESSING.OPEN_BATCH' | translate}}
+                        </button>
+                    </div>
                 </form>
-                <div fxLayout="row" fxLayoutAlign="center center">
-                    <button mat-button class="greenButton" [disabled]="formGroup.invalid" (click)="addBatch(); batchOpen = true">
-                        {{'PROCESSING.OPEN_BATCH' | translate}}
-                    </button>
-                </div>
             </div>
             <ng-template #box>
                 <app-box [batchOpen]="activeBatch" (boxTerminate)="getBatch(true)"></app-box>

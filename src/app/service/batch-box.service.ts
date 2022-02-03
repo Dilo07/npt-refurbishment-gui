@@ -21,8 +21,11 @@ export class BatchBoxService {
   getLotList(active: boolean): Observable<Batch[]> {
     return this.http.get<Batch[]>(this.apiUrl + `lot/list/${active}`)
       .pipe(catchError(err => { throw err; }));
-    /* return of([]); */
-    /* return of(this.lotListMokup); */
+  }
+
+  getLotSequence(yy: string): Observable<string> {
+    return this.http.get<string>(this.apiUrl + `/lot/${yy}/sequence`)
+      .pipe(catchError(err => { throw err; }));
   }
 
   // ritorna una scatola se è aperta altrimenti null se nessuna scatola è aperta
@@ -34,8 +37,6 @@ export class BatchBoxService {
     };
     return this.http.get<Box>(this.apiUrl + 'box', options)
       .pipe(catchError(err => { throw err; }));
-    /* return of(); */
-    /* this.boxMokup */
   }
 
   addBox(): Observable<Box> {

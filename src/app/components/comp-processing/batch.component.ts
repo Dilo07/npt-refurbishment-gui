@@ -1,7 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SnackBar } from '@npt/npt-template';
-import { interval, Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Batch, Hardware } from '../domain/domain';
 
@@ -28,7 +29,7 @@ export class BatchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.createForm();
+    this.getLotSequence();
     this.getBatch();
   }
 
@@ -60,10 +61,13 @@ export class BatchComponent implements OnInit, OnDestroy {
 
   public addBatch(): void {
     const formBatch = new Batch();
-    const batch1 = this.formGroup.get('ctrlBatch1').value;
-    const batch2 = this.formGroup.get('ctrlBatch2').value;
-    const batch3 = this.formGroup.get('ctrlBatch3').value;
-    formBatch.lotNumber = batch1 + '/' + batch2 + '/' + batch3;
+    const sequence = this.formGroup.get('ctrlSequence').value;
+    const year = this.formGroup.get('ctrlYear').value;
+    const supplierCode = this.formGroup.get('ctrlSupc').value;
+    formBatch.sequenceNumber = sequence;
+    formBatch.yearNumber = year;
+    formBatch.supplierCode = supplierCode;
+    /* formBatch.lotNumber = batch1 + '/' + batch2 + '/' + batch3; */
     formBatch.hardware = this.formGroup.get('ctrlHrdw').value;
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
@@ -75,18 +79,35 @@ export class BatchComponent implements OnInit, OnDestroy {
     ));
   }
 
-  private createForm(): void {
+  private createForm(sequence: string): void {
+    const year = moment().year().toString().substring(2);
     this.formGroup = this.formBuilder.group({
-      ctrlBatch1: ['', Validators.required],
-      ctrlBatch2: ['', Validators.required],
-      ctrlBatch3: [this.batchDefault, Validators.required],
+      ctrlSequence: [sequence + year, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      ctrlYear: [year, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      ctrlSupc: [this.batchDefault, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       ctrlHrdw: [Hardware['arianna I'], Validators.required],
       ctrlBoxNum: [100, Validators.required],
       ctrlBoxSize: [48, Validators.required]
-    });
+    }, { validators: this.yearValidator(Validators.required, ['ctrlSequence', 'ctrlYear']) });
   }
 
-  private getLotSequence(): void{
-    
+  private getLotSequence(): void {
+    const year = moment().year().toString().substring(2);
+    this.subscription.push(this.batchBoxService.getLotSequence(year).subscribe(
+      seq => this.createForm(seq),
+      () => null,
+      () => null
+    ));
   }
+
+  private yearValidator = (validator: ValidatorFn, controls: string[] = null) => (group: FormGroup): ValidationErrors | null => {
+    const yearSeq = String(group.controls.ctrlSequence.value).slice(-2);
+    const year = group.controls.ctrlYear.value;
+    if (yearSeq !== year) {
+      return { yearValidator: true };
+    } else {
+      return null;
+    }
+  };
+
 }

@@ -10,6 +10,9 @@ export class Batch {
   countClosedBoxPercentage: number;
   dateIns: Date;
   dateClose: Date;
+  sequenceNumber: number;
+  yearNumber: string;
+  supplierCode: string;
 }
 
 export enum Hardware {
