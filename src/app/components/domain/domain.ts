@@ -1,6 +1,5 @@
 export class Batch {
   id: number;
-  lotNumber: string;
   hardware: Hardware;
   boxNumber: number;
   boxSize: number;

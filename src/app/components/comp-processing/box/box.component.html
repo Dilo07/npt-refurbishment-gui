@@ -4,7 +4,7 @@
         <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
             <mat-card-content>
                 <mat-card-title>{{'BOX.BATCH_N' | translate}}</mat-card-title>
-                <mat-card-subtitle>{{batchOpen[0].lotNumber}}</mat-card-subtitle>
+                <mat-card-subtitle>{{batchOpen[0].sequenceNumber + '/' + batchOpen[0].supplierCode + '/' + batchOpen[0].yearNumber }}</mat-card-subtitle>
                 <mat-card-title>{{'BOX.NUM' | translate}}</mat-card-title>
                 <mat-card-subtitle>{{batchOpen[0].boxNumber}}</mat-card-subtitle>
                 <mat-card-title>{{'BOX.OBU_N' | translate}}</mat-card-title>
@@ -33,8 +33,9 @@
         </mat-card>
     </div>
     <div *ngIf="!actualBox else open">
-        <div *ngIf="batchOpen[0]?.countClosedBoxPercentage + batchOpen[0]?.countOpenBoxPercentage === 100 else addbox">
+        <div *ngIf="batchOpen[0]?.countClosedBoxPercentage + batchOpen[0]?.countOpenBoxPercentage === 100 else addbox" fxLayout="row">
             <mat-card-subtitle> Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni</mat-card-subtitle>
+            <button mat-icon-button (click)="boxTerminate.emit();"><mat-icon  matTooltip="Aggiorna">refresh</mat-icon></button>
         </div>
         <ng-template #addbox>
             <button mat-button class="greenButton" (click)="addBox();"> {{'BOX.ADD_BOX' | translate}}</button>
@@ -52,6 +53,7 @@
         <ng-template #closebox>
             <div>
                 <button mat-button class="greenButton" (click)="closeBox()"> {{'BOX.CLOSE_BOX' | translate}}</button>
+                <mat-checkbox [(ngModel)]="opening"> {{'BOX.OPENING' | translate}}</mat-checkbox>
             </div>
         </ng-template>
     </ng-template>

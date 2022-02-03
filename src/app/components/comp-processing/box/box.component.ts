@@ -51,7 +51,6 @@ export class BoxComponent implements OnInit {
         if (!box) {
           this.boxTerminate.emit();
         }
-        console.log(box);
         this.actualBox = box;
       },
       () => null,
@@ -70,7 +69,6 @@ export class BoxComponent implements OnInit {
         if (!box) {
           this.boxTerminate.emit();
         }
-        console.log(box);
         this.actualBox = box;
       }
     );
