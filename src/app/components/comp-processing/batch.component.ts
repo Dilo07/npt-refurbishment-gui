@@ -82,13 +82,13 @@ export class BatchComponent implements OnInit, OnDestroy {
   private createForm(sequence: string): void {
     const year = moment().year().toString().substring(2);
     this.formGroup = this.formBuilder.group({
-      ctrlSequence: [sequence + year, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      ctrlYear: [year, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
-      ctrlSupc: [this.batchDefault, [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      ctrlSequence: [sequence + year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(6), Validators.maxLength(6)]],
+      ctrlYear: [year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(2), Validators.maxLength(2)]],
+      ctrlSupc: [this.batchDefault, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(5), Validators.maxLength(5)]],
       ctrlHrdw: [Hardware['arianna I'], Validators.required],
       ctrlBoxNum: [100, Validators.required],
       ctrlBoxSize: [48, Validators.required]
-    }, { validators: this.yearValidator(Validators.required, ['ctrlSequence', 'ctrlYear']) });
+    }, { validators: this.yearValidator() });
   }
 
   private getLotSequence(): void {
@@ -100,7 +100,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     ));
   }
 
-  private yearValidator = (validator: ValidatorFn, controls: string[] = null) => (group: FormGroup): ValidationErrors | null => {
+  private yearValidator = () => (group: FormGroup): ValidationErrors | null => {
     const yearSeq = String(group.controls.ctrlSequence.value).slice(-2);
     const year = group.controls.ctrlYear.value;
     if (yearSeq !== year) {

@@ -12,17 +12,17 @@
                         <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
                             <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                                 <mat-label>{{'PROCESSING.SEQUENCE' | translate}}</mat-label>
-                                <input matInput type="text" formControlName="ctrlSequence" required>
+                                <input matInput type="text" formControlName="ctrlSequence" required maxlength="6">
                                 <mat-error>{{'PROCESSING.INSERT_SEQUENCE' | translate}}</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                                 <mat-label>{{'PROCESSING.YEAR' | translate}}</mat-label>
-                                <input matInput type="text" formControlName="ctrlYear" required>
+                                <input matInput type="text" formControlName="ctrlYear" required maxlength="2">
                                 <mat-error>{{'PROCESSING.INSERT_YEAR' | translate}}</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                                 <mat-label>{{'PROCESSING.SUPC' | translate}}</mat-label>
-                                <input matInput type="text" formControlName="ctrlSupc" required>
+                                <input matInput type="text" formControlName="ctrlSupc" required maxlength="5">
                                 <mat-error>{{'PROCESSING.INSERT_SUPC' | translate}}</mat-error>
                             </mat-form-field>
                         </div>
