@@ -44,10 +44,10 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
       provide: 'mailData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['mail', ConfigInitService]
     },
-    { provide: 'batchDefault', useValue: 'batchDefault'},
+    { provide: 'supplierCode', useValue: 'supplierCode'},
     {
-      provide: 'batchDefaultData',
-      useFactory: getPropertyFromConfig, multi: false, deps: ['batchDefault', ConfigInitService]
+      provide: 'supplierCodeData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['supplierCode', ConfigInitService]
     },
     { provide: 'hideProfile', useValue: 'hideProfile' },
     {

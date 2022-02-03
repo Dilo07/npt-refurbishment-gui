@@ -25,7 +25,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private batchBoxService: BatchBoxService,
     private snackBar: SnackBar,
-    @Inject('batchDefaultData') private batchDefault: string
+    @Inject('supplierCodeData') private supplier: string
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +67,6 @@ export class BatchComponent implements OnInit, OnDestroy {
     formBatch.sequenceNumber = sequence;
     formBatch.yearNumber = year;
     formBatch.supplierCode = supplierCode;
-    /* formBatch.lotNumber = batch1 + '/' + batch2 + '/' + batch3; */
     formBatch.hardware = this.formGroup.get('ctrlHrdw').value;
     formBatch.boxNumber = this.formGroup.get('ctrlBoxNum').value;
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
@@ -84,7 +83,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     this.formGroup = this.formBuilder.group({
       ctrlSequence: [sequence + year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(6), Validators.maxLength(6)]],
       ctrlYear: [year, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(2), Validators.maxLength(2)]],
-      ctrlSupc: [this.batchDefault, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(5), Validators.maxLength(5)]],
+      ctrlSupc: [this.supplier, [Validators.required, Validators.pattern(/^\d+$/), Validators.minLength(5), Validators.maxLength(5)]],
       ctrlHrdw: [Hardware['arianna I'], Validators.required],
       ctrlBoxNum: [100, Validators.required],
       ctrlBoxSize: [48, Validators.required]
