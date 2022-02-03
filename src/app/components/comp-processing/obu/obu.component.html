@@ -8,7 +8,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
                 <mat-label>{{'BOX.ICCID' | translate}}</mat-label>
-                <input matInput type="text" formControlName="ctrlIccId" required maxlength="20" (change)="addObu()">
+                <input matInput type="text" formControlName="ctrlIccId" required maxlength="19" (change)="addObu()">
                 <mat-error>{{'BOX.INSERT_ICCID' | translate}}</mat-error>
             </mat-form-field>
         </section>

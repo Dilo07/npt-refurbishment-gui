@@ -20,8 +20,8 @@ export class ObuComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
-      ctrlObuId: ['', [Validators.minLength(24), Validators.maxLength(24)]],
-      ctrlIccId: ['', [Validators.minLength(20), Validators.maxLength(20)]]
+      ctrlObuId: ['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(24), Validators.maxLength(24)]],
+      ctrlIccId: ['', [Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(19), Validators.maxLength(19)]]
     });
   }
 

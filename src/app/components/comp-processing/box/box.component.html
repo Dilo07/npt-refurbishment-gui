@@ -33,14 +33,26 @@
         </mat-card>
     </div>
     <div *ngIf="!actualBox else open">
-        <button mat-button class="greenButton" (click)="addBox();"> {{'BOX.ADD_BOX' | translate}}</button>
+        <div *ngIf="batchOpen[0]?.countClosedBoxPercentage + batchOpen[0]?.countOpenBoxPercentage === 100 else addbox">
+            <mat-card-subtitle> Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni</mat-card-subtitle>
+        </div>
+        <ng-template #addbox>
+            <button mat-button class="greenButton" (click)="addBox();"> {{'BOX.ADD_BOX' | translate}}</button>
+        </ng-template>
     </div>
     <ng-template #open>
-        <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
-            <mat-card-title> {{'BOX.BOX' | translate}} id: {{actualBox.id}}</mat-card-title>
-            <mat-checkbox [(ngModel)]="closure"> {{'BOX.CLOUSURE' | translate}}</mat-checkbox>
-            <mat-checkbox [(ngModel)]="opening"> {{'BOX.OPENING' | translate}}</mat-checkbox>
-        </section>
-        <app-obu [actualBox]="actualBox" (addObuEvent)="addObu($event);"></app-obu>
+        <div *ngIf="actualBox.countPercentage !== 100 else closebox">
+            <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+                <mat-card-title> {{'BOX.BOX' | translate}} id: {{actualBox.id}}</mat-card-title>
+                <mat-checkbox [(ngModel)]="closure"> {{'BOX.CLOUSURE' | translate}}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="opening"> {{'BOX.OPENING' | translate}}</mat-checkbox>
+            </section>
+            <app-obu [actualBox]="actualBox" (addObuEvent)="addObu($event);"></app-obu>
+        </div>
+        <ng-template #closebox>
+            <div>
+                <button mat-button class="greenButton" (click)="closeBox()"> {{'BOX.CLOSE_BOX' | translate}}</button>
+            </div>
+        </ng-template>
     </ng-template>
 </mat-card-content>

@@ -65,6 +65,7 @@
         "ADD_OBU": "Aggiungi obu",
         "ADD_BOX_SUCCESS": "Scatola creata",
         "ADD_OBU_SUCCESS": "Obu aggiunto",
+        "CLOSE_BOX": "Chiudi scatola",
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",

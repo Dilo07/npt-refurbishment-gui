@@ -63,4 +63,14 @@ export class BatchBoxService {
     return this.http.post<Box>(this.apiUrl + 'obu', obu, options)
       .pipe(catchError(err => { throw err; }));
   }
+
+  closeBox(opening: boolean): Observable<Box> {
+    const guId = localStorage.getItem('guId');
+    const options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      params: HttpUtils.createHttpParams({ ws: guId, open: opening })
+    };
+    return this.http.put<Box>(this.apiUrl + 'box/close', null, options)
+      .pipe(catchError(err => { throw err; }));
+  }
 }

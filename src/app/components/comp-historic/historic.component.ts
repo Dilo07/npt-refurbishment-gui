@@ -13,7 +13,7 @@ import { Batch } from '../domain/domain';
   width: 100%;
   background-color: aliceblue;
   }
-  .mat-column-expandButton { max-width: 2%; }
+  .mat-column-expandButton { max-width: 2px; }
   .mat-column-id { max-width: 18%;}
   .mat-column-lotNumber { max-width: 20%}
   .mat-column-hardware { max-width: 20%}
@@ -33,7 +33,7 @@ export class HistoricComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public panelOpenState = false;
   public complete = true;
-  public expandedElement: any | null;
+  public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose'];
 

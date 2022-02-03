@@ -65,6 +65,7 @@
         "ADD_OBU": "Add obu",
         "ADD_BOX_SUCCESS": "Box created",
         "ADD_OBU_SUCCESS": "Obu added",
+        "CLOSE_BOX": "Close box",
         "OBUID": "Insert obu Id",
         "INSERT_OBUID": "Insert a correct obu id",
         "ICCID": "Insert icc Id",

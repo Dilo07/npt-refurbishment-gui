@@ -45,11 +45,13 @@ export class BoxComponent implements OnInit {
   }
 
   public addObu(obu: Obu): void {
+    // aggiunge l'obu se il box di ritorno è null richiama i lotti
     this.batchBoxService.addObu(obu, this.closure, this.opening).subscribe(
       box => {
         if (!box) {
           this.boxTerminate.emit();
         }
+        console.log(box);
         this.actualBox = box;
       },
       () => null,
@@ -57,6 +59,19 @@ export class BoxComponent implements OnInit {
         if (this.actualBox) {
           this.snackBar.showMessage('BOX.ADD_OBU_SUCCESS', 'INFO');
         }
+      }
+    );
+  }
+
+  public closeBox(): void {
+    // chiude la scatola se il box di ritorno è null richiama i lotti
+    this.batchBoxService.closeBox(this.opening).subscribe(
+      box => {
+        if (!box) {
+          this.boxTerminate.emit();
+        }
+        console.log(box);
+        this.actualBox = box;
       }
     );
   }
