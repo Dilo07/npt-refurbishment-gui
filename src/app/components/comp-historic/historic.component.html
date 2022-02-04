@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title fxLayout="row" fxLayoutAlign="center">Storico</mat-card-title>
+    <mat-card-title fxLayout="row" fxLayoutAlign="center">{{'MENU.Historic' | translate}}</mat-card-title>
     <mat-card-content>
         <mat-progress-bar mode="indeterminate" *ngIf="!complete"></mat-progress-bar>
         <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
@@ -78,7 +78,7 @@
                                             <button mat-icon-button><mat-icon matTooltip="Stampa">print</mat-icon></button>
                                         </div>
                                         <ng-template #generate>
-                                            <button mat-icon-button><mat-icon matTooltip="Genera">calculate</mat-icon></button>
+                                            <button mat-icon-button><mat-icon matTooltip="Genera">ballot</mat-icon></button>
                                         </ng-template>
                                     </div>
                                 </div>

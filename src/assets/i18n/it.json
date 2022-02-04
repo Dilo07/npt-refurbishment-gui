@@ -80,7 +80,8 @@
         "ICCID": "Inserisci l'icc Id",
         "INSERT_ICCID": "Inserisci un icc id corretto",
         "CLOUSURE": "Chiusura scatola automatica",
-        "OPENING": "Apertura scatola automatica"
+        "OPENING": "Apertura scatola automatica",
+        "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
     "HARDWARE": {
         "1": "Obu Go",
@@ -92,7 +93,8 @@
         "ACTION": {
             "SAVE": "Salva",
             "DELETE": "Cancella",
-            "REMOVE": "Rimuovi"
+            "REMOVE": "Rimuovi",
+            "REFRESH": "Aggiorna"
         }
     }
 }

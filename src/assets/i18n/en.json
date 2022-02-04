@@ -80,7 +80,8 @@
         "ICCID": "Insert icc Id",
         "INSERT_ICCID": "Insert a correct icc id",
         "CLOUSURE": "Automatic clousure box",
-        "OPENING": "Automatic open box"
+        "OPENING": "Automatic open box",
+        "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
     },
     "HARDWARE": {
         "1": "Obu Go",
@@ -93,7 +94,8 @@
         "ACTION": {
             "SAVE": "Save",
             "DELETE": "Delete",
-            "REMOVE": "Remove"
+            "REMOVE": "Remove",
+            "REFRESH": "Refresh"
         }
     }
 }
