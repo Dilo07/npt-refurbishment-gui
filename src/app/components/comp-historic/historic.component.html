@@ -44,7 +44,7 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element"> 
-                    <button mat-icon-button *ngIf="!element.dateGenXML">
+                    <button mat-icon-button *ngIf="!element.dateGenXML" (click)="sendXml(element.id)">
                         <mat-icon matTooltip="Invia xml">send</mat-icon>
                     </button>    
                 </td>

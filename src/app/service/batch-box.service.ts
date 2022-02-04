@@ -80,17 +80,17 @@ export class BatchBoxService {
   }
 
   genLotXML(id: number): Observable<void> {
-    return this.http.put<void>(this.http + `/lot/${id}/xml`, null)
+    return this.http.put<void>(this.apiUrl + `/lot/${id}/xml`, null)
       .pipe(catchError(err => { throw err; }));
   }
 
   getBoxLabel(id: number): Observable<void> {
-    return this.http.get<void>(this.http + `/box/${id}/label`)
+    return this.http.get<void>(this.apiUrl + `/box/${id}/label`)
       .pipe(catchError(err => { throw err; }));
   }
 
   genBoxLabel(id: number): Observable<void> {
-    return this.http.put<void>(this.http + `/box/${id}/label`, null)
+    return this.http.put<void>(this.apiUrl + `/box/${id}/label`, null)
       .pipe(catchError(err => { throw err; }));
   }
 }

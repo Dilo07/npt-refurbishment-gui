@@ -48,12 +48,18 @@ export class HistoricComponent implements OnInit, OnDestroy {
     });
   }
 
-  getBoxList(id: number): void {
+  public getBoxList(id: number): void {
     this.subscription.push(this.batchBoxService.getBoxList(id).subscribe(
       boxList => this.boxList = boxList,
       () => null,
       () => this.ngOnDestroy()
     ));
+  }
+
+  public sendXml(id: number): void {
+    this.batchBoxService.genLotXML(id).subscribe(
+      data => console.log(data)
+    );
   }
 
 }
