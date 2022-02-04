@@ -1,0 +1,21 @@
+{
+  "be_url": "http://localhost:9094",
+  "context_app": "",
+  "viewOuter" : false,
+  "flow_implicit": false,
+  "supplierCode": "50014",
+  "hideProfile": true,
+  "mail": "ciro.autiero@movyon.com",
+  "no_auth": {
+    "roles": [],
+    "user": {
+      "id": "myID",
+      "username": "TEST USERNAME",
+      "email": "movyon@movyon.it",
+      "firstName": "movyon",
+      "lastName": "",
+      "enabled": true,
+      "emailVerified": true
+    }
+  }
+}

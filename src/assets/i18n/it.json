@@ -1,0 +1,100 @@
+{
+    "LANG": {
+        "EN": "Inglese",
+        "IT": "Italiano"
+    },
+    "WELCOME": {
+        "TITLE": "Benvenuto nell'APP"
+    },
+    "MENU": {
+        "Dashboard": "Dashboard",
+        "Processing": "Lavorazione",
+        "Historic": "Storico"
+    },
+    "ACCOUNT": {
+        "PROFILE": "Profilo",
+        "LOGOUT": "Esci",
+        "DARK": "Tema scuro",
+        "OLD-PASSWORD": "Inserisci la vecchia password",
+        "NEW-PASSWORD": "Inserisci la nuova password",
+        "INSERT-PASSWORD": "Inserisci una password",
+        "CONFIRM-PASSWORD": "Conferma password",
+        "INCORRECT-PASSWORD": "La password non rispetta i criteri di sicurezza",
+        "CHANGE-PASSWORD": "Cambia password",
+        "CANCEL": "Annulla",
+        "RULE-PASSWORD": "E' richiesta una password di almeno 8 caratteri con almeno una lettera maiuscola, una minuscola ed un numero",
+        "PASSWORD-DIFFERENT": "Le password inserite sono diverse",
+        "ERROR": "Cambio password non eseguito correttamente",
+        "SUCCESS": "Password modificata correttamente"
+    },
+    "ERROR": {
+        "BE_ERROR": "Servizi non raggiungibili"
+    },
+    "error": {
+        "generic": "Errore lato server"
+    },
+    "PAGINATOR": {
+        "ITEM": "Elementi per pagina",
+        "NEXT_PAGE": "Pagina successiva",
+        "PREVIOUS_PAGE": "Pagina precedente",
+        "FIRST_PAGE": "Prima pagina",
+        "LAST_PAGE": "Ultima pagina",
+        "OF": "di"
+    },
+    "PROCESSING": {
+        "TITLE": "Lavorazione lotto",
+        "NEW_BATCH": "Inserisci le informazione del nuovo lotto",
+        "BATCH": "Lotto",
+        "SUPC": "Supplier code",
+        "INSERT_SUPC": "Inserisci un supplier code corretto",
+        "SEQUENCE": "Sequenza",
+        "INSERT_SEQUENCE": "Inserisci una sequenza corretta",
+        "YEAR": "Inserisci l'anno",
+        "INSERT_YEAR": "Inserisci un anno corretto",
+        "ERROR_YEAR": "Le ultime due cifre della sequence devono corrispondere con l'anno inserito",
+        "BOX": "N. scatole",
+        "INSERT_BOX": "Inserisci numero scatole",
+        "BOX_SIZE": "N. obu per scatola",
+        "INSERT_BOX_SIZE": "Inserisci n. obu per scatola",
+        "HARDWARE": "Inserisci il tipo di device",
+        "OPEN_BATCH": "Avvia lotto",
+        "BATCH_CREATE": "Lotto creato correttamente",
+        "BATCH_END": "Lotto terminato"
+    },
+    "BOX":{
+        "BOX": "Scatola",
+        "BOX_OPEN": "Scatole aperte",
+        "TITLE": "Lavorazione scatola",
+        "BATCH_N": "Lotto",
+        "NUM": "Numero scatole",
+        "OBU_N": "Obu per scatola",
+        "OBU_INSERT": "Obu inseriti nella scatola",
+        "NO_OBU": "Nessun obu nella scatola",
+        "ADD_BOX": "Aggiungi scatola",
+        "ADD_OBU": "Aggiungi obu",
+        "ADD_BOX_SUCCESS": "Scatola creata",
+        "ADD_OBU_SUCCESS": "Obu aggiunto",
+        "CLOSE_BOX": "Chiudi scatola",
+        "OBUID": "Inserisci l'obu Id",
+        "INSERT_OBUID": "Inserisci un obu id corretto",
+        "ICCID": "Inserisci l'icc Id",
+        "INSERT_ICCID": "Inserisci un icc id corretto",
+        "CLOUSURE": "Chiusura scatola automatica",
+        "OPENING": "Apertura scatola automatica",
+        "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
+    },
+    "HARDWARE": {
+        "1": "Obu Go",
+        "2": "Even x",
+        "3": "Arianna II",
+        "4": "Arianna I"
+    },
+    "COMMON": {
+        "ACTION": {
+            "SAVE": "Salva",
+            "DELETE": "Cancella",
+            "REMOVE": "Rimuovi",
+            "REFRESH": "Aggiorna"
+        }
+    }
+}

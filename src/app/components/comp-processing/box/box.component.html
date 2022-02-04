@@ -1,0 +1,64 @@
+<mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'BOX.TITLE' | translate}}</mat-card-title>
+<mat-card-content fxLayout="column" fxLayoutGap="40px">
+    <div fxLayout="row wrap" fxLayoutAlign="start" *ngIf="batchOpen.length > 0">
+        <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-content>
+                <mat-card-title>{{'BOX.BATCH_N' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].sequenceNumber + '/' + batchOpen[0].supplierCode + '/' +
+                    batchOpen[0].yearNumber }}</mat-card-subtitle>
+                <mat-card-title>{{'BOX.NUM' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].boxNumber}}</mat-card-subtitle>
+                <mat-card-title>{{'BOX.OBU_N' | translate}}</mat-card-title>
+                <mat-card-subtitle>{{batchOpen[0].boxSize}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        <mat-card fxFlex.gt-lg="70" fxFlex.gt-md="70" fxFlex.gt-xs="100" fxFlex="100">
+            <mat-card-content>
+                <span *ngIf="actualBox else batch">
+                    <p>{{'PROCESSING.BATCH' | translate}}: {{actualBox.lot.countClosedBoxPercentage}}% -
+                        {{'BOX.BOX_OPEN' | translate}}:
+                        {{actualBox.lot.countOpenBox}}</p>
+                    <mat-progress-bar mode="determinate" value="{{actualBox.lot.countClosedBoxPercentage}}">
+                    </mat-progress-bar>
+                    <p>{{'BOX.BOX' | translate}}: {{actualBox.countPercentage}}%</p>
+                    <mat-progress-bar mode="determinate" value="{{actualBox.countPercentage}}"></mat-progress-bar>
+                </span>
+                <ng-template #batch>
+                    <p>{{'PROCESSING.BATCH' | translate}}: {{batchOpen[0].countClosedBoxPercentage}}% -
+                        {{'BOX.BOX_OPEN'| translate}}: {{batchOpen[0].countOpenBox}}
+                    </p>
+                    <mat-progress-bar mode="determinate" value="{{batchOpen[0].countClosedBoxPercentage}}">
+                    </mat-progress-bar>
+                </ng-template>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="!actualBox else open">
+        <div *ngIf="batchOpen[0]?.countClosedBoxPercentage + batchOpen[0]?.countOpenBoxPercentage === 100 else addbox"
+            fxLayout="row">
+            <mat-card-subtitle> {{'BOX.UNAVAILABLE' | translate}}</mat-card-subtitle>
+            <button mat-icon-button (click)="boxTerminate.emit();">
+                <mat-icon matTooltip="{{'COMMON.ACTION.REFRESH' | translate}}">refresh</mat-icon>
+            </button>
+        </div>
+        <ng-template #addbox>
+            <button mat-button class="greenButton" (click)="addBox();"> {{'BOX.ADD_BOX' | translate}}</button>
+        </ng-template>
+    </div>
+    <ng-template #open>
+        <div *ngIf="actualBox.countPercentage !== 100 else closebox">
+            <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+                <mat-card-title> {{'BOX.BOX' | translate}} id: {{actualBox.id}}</mat-card-title>
+                <mat-checkbox [(ngModel)]="closure"> {{'BOX.CLOUSURE' | translate}}</mat-checkbox>
+                <mat-checkbox [(ngModel)]="opening"> {{'BOX.OPENING' | translate}}</mat-checkbox>
+            </section>
+            <app-obu [actualBox]="actualBox" (addObuEvent)="addObu($event);"></app-obu>
+        </div>
+        <ng-template #closebox>
+            <div fxLayout="row wrap" fxLayoutGap="20px">
+                <button mat-button class="greenButton" (click)="closeBox()"> {{'BOX.CLOSE_BOX' | translate}}</button>
+                <mat-checkbox [(ngModel)]="opening"> {{'BOX.OPENING' | translate}}</mat-checkbox>
+            </div>
+        </ng-template>
+    </ng-template>
+</mat-card-content>

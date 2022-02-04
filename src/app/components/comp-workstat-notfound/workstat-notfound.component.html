@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-title fxLayout="row" fxLayoutAlign="center"> Workstation non censita</mat-card-title>
+    <mat-card-subtitle fxLayout="row" fxLayoutAlign="center"> Se vuoi censire una Workstation segui i seguenti passi:
+    </mat-card-subtitle>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <p mat-line>1. Installa l'estensione Chrome AmIUnique sul seguente link
+                    <a target="_blank" href="https://amiunique.org/stability">Install</a>.
+                    Seleziona il tuo browser ed aggiungi l'estensione.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>2. Una volta installata apri l'estenzione dal tuo browser e clicca su
+                    <b>view timeline</b>.<br>
+                    In alto, nella barra degli indirizzi salva il tuo <b>guId</b>
+                    (è l'Identificativo successivo a timeline/)
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>3. Ritorna nell'app refusrbishment e apri il <b>Devtools</b> premendo <b>f12</b>
+                    o premendo il tasto destro - ispeziona.
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>4. Spostati sulla scheda <b>application</b>, espandi la voce di sinistra <b>Local
+                        storage</b> ed entra nella prima voce (quella identificata dal link del sito).
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>5. Clicca sotto la colonna <b>Key</b> ed aggiungi la chiave <b>fingerId</b>, mentre sotto la
+                    colonna <b>value</b> aggiungi il <b>guId</b>
+                    precedentemente copiato dall'estensione.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>6. Invia una mail a <b>{{mail}}</b> con il <b>guId</b> inserito in modo da censire la
+                    postazione sui
+                    server.
+                </p>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <p mat-line>7. Dopo che la postazione è stata censita aggiorna il sito con <b>f5</b>.
+                </p>
+            </mat-list-item>
+        </mat-list>
+        <h4> N.B. Alla chiusura del browser non dovrà essere svuotata la cache, nel caso in cui ciò avvenisse
+            dovrai ripetere dal punto 2 al punto 5 </h4>
+    </mat-card-content>
+</mat-card>

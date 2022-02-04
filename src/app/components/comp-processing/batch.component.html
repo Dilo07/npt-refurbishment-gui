@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-card-content>
+        <div *ngIf="!complete else loadData">
+            <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+        </div>
+        <ng-template #loadData>
+            <div *ngIf="!batchOpen else box">
+                <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.TITLE' | translate}}</mat-card-title>
+                <mat-card-subtitle fxLayout="row" fxLayoutAlign="center center">{{'PROCESSING.NEW_BATCH' | translate}}</mat-card-subtitle>
+                <section *ngIf="formGroup">
+                    <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
+                        <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.SEQUENCE' | translate}}</mat-label>
+                                <input matInput type="text" formControlName="ctrlSequence" required maxlength="6">
+                                <mat-error>{{'PROCESSING.INSERT_SEQUENCE' | translate}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.YEAR' | translate}}</mat-label>
+                                <input matInput type="text" formControlName="ctrlYear" required maxlength="2">
+                                <mat-error>{{'PROCESSING.INSERT_YEAR' | translate}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.SUPC' | translate}}</mat-label>
+                                <input matInput type="text" formControlName="ctrlSupc" required maxlength="5">
+                                <mat-error>{{'PROCESSING.INSERT_SUPC' | translate}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.HARDWARE' | translate}}</mat-label>
+                                <mat-select formControlName="ctrlHrdw">
+                                    <mat-option *ngFor="let hardware of allHardware" [value]="hardware">
+                                        {{'HARDWARE.' + hardware | translate}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.BOX' | translate}}</mat-label>
+                                <input matInput type="number" formControlName="ctrlBoxNum" required>
+                                <mat-error>{{'PROCESSING.INSERT_BOX' | translate}}</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+                                <mat-label>{{'PROCESSING.BOX_SIZE' | translate}}</mat-label>
+                                <input matInput type="number" formControlName="ctrlBoxSize" required>
+                                <mat-error>{{'PROCESSING.INSERT_BOX_SIZE' | translate}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <mat-error *ngIf="formGroup.hasError('yearValidator')" fxLayout="row" fxLayoutAlign="center">{{'PROCESSING.ERROR_YEAR' | translate}}</mat-error>
+                    </form>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-button class="greenButton" [disabled]="formGroup?.invalid" (click)="addBatch(); batchOpen = true">
+                            {{'PROCESSING.OPEN_BATCH' | translate}}
+                        </button>
+                    </div>
+                </section>
+            </div>
+            <ng-template #box>
+                <app-box [batchOpen]="activeBatch" (boxTerminate)="getBatch(true)"></app-box>
+            </ng-template>
+        </ng-template>
+    </mat-card-content>
+</mat-card>

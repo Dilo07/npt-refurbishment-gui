@@ -1,0 +1,101 @@
+{
+    "LANG": {
+        "EN": "English",
+        "IT": "Italian"
+    },
+    "WELCOME": {
+        "TITLE": "Welcome on APP"
+    },
+    "MENU": {
+        "Dashboard": "Dashboard",
+        "Processing": "Processing",
+        "Historic": "Historic"
+    },
+    "ACCOUNT": {
+        "PROFILE": "Profile",
+        "LOGOUT": "Log Out",
+        "DARK": "Dark theme",
+        "OLD-PASSWORD": "Insert old password",
+        "NEW-PASSWORD": "Insert new password",
+        "INSERT-PASSWORD": "Insert a password",
+        "CONFIRM-PASSWORD": "Confirm password",
+        "INCORRECT-PASSWORD": "the password does not respect the security criteria",
+        "CHANGE-PASSWORD": "Change password",
+        "CANCEL": "Cancel",
+        "RULE-PASSWORD": "The password must have 8 carapter with almost one uppercase, on lowercase and one number",
+        "PASSWORD-DIFFERENT": "The two password inserted are different",
+        "ERROR": "password change not performed correctly",
+        "SUCCESS": "Password changed successfully"
+    },
+    "ERROR": {
+        "BE_ERROR": "Unreachable services"
+    },
+    "error": {
+        "generic": "Error server site"
+    },
+    "PAGINATOR": {
+        "ITEM": "Item for page",
+        "NEXT_PAGE": "Next page",
+        "PREVIOUS_PAGE": "Previous page",
+        "FIRST_PAGE": "First pagina",
+        "LAST_PAGE": "Last pagina",
+        "OF": "of"
+    },
+    "PROCESSING": {
+        "TITLE": "Batch processing ",
+        "NEW_BATCH": "Insert the informations of new batch",
+        "BATCH": "Batch",
+        "SUPC": "Supplier code",
+        "INSERT_SUPC": "Insert a correct supplier code",
+        "SEQUENCE": "Sequence",
+        "INSERT_SEQUENCE": "Insert a correct sequence",
+        "YEAR": "Insert year",
+        "INSERT_YEAR": "Insert a correct year",
+        "ERROR_YEAR": "The last two digits of the sequence must match the year entered",
+        "BOX": "Scatole #",
+        "INSERT_BOX": "Insert box number",
+        "BOX_SIZE": "Obu # for box",
+        "INSERT_BOX_SIZE": "Insert obu # for box",
+        "HARDWARE": "Insert type device",
+        "OPEN_BATCH": "Start batch",
+        "BATCH_CREATE": "Batch correctly created",
+        "BATCH_END": "Batch terminated"
+    },
+    "BOX":{
+        "BOX": "Box",
+        "BOX_OPEN": "Box open",
+        "TITLE": "Box processing",
+        "BATCH_N": "Lot number",
+        "NUM": "Box number",
+        "OBU_N": "Obu in box",
+        "OBU_INSERT": "Obu inserted on box",
+        "NO_OBU": "Nobody obu on box",
+        "ADD_BOX": "Add box scatola",
+        "ADD_OBU": "Add obu",
+        "ADD_BOX_SUCCESS": "Box created",
+        "ADD_OBU_SUCCESS": "Obu added",
+        "CLOSE_BOX": "Close box",
+        "OBUID": "Insert obu Id",
+        "INSERT_OBUID": "Insert a correct obu id",
+        "ICCID": "Insert icc Id",
+        "INSERT_ICCID": "Insert a correct icc id",
+        "CLOUSURE": "Automatic clousure box",
+        "OPENING": "Automatic open box",
+        "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
+    },
+    "HARDWARE": {
+        "1": "Obu Go",
+        "2": "Even x",
+        "3": "Arianna II",
+        "4": "Arianna I"
+    },
+    "COMMON": 
+    {
+        "ACTION": {
+            "SAVE": "Save",
+            "DELETE": "Delete",
+            "REMOVE": "Remove",
+            "REFRESH": "Refresh"
+        }
+    }
+}
