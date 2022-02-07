@@ -31,7 +31,10 @@
         "BE_ERROR": "Unreachable services"
     },
     "error": {
-        "generic": "Error server site"
+        "generic": "Error server site",
+        "lot": {
+            "full": "Lot full"
+        }
     },
     "PAGINATOR": {
         "ITEM": "Item for page",

@@ -31,7 +31,10 @@
         "BE_ERROR": "Servizi non raggiungibili"
     },
     "error": {
-        "generic": "Errore lato server"
+        "generic": "Errore lato server",
+        "lot": {
+            "full": "Lotto pieno"
+        }
     },
     "PAGINATOR": {
         "ITEM": "Elementi per pagina",

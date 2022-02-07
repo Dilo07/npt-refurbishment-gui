@@ -29,7 +29,6 @@ export class BatchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.getLotSequence();
     this.getBatch();
   }
 
@@ -49,6 +48,7 @@ export class BatchComponent implements OnInit, OnDestroy {
           this.batchOpen = true;
         } else {
           this.batchOpen = false;
+          this.getLotSequence();
           if (verifyEnd) {
             this.snackBar.showMessage('PROCESSING.BATCH_END', 'INFO');
           }
