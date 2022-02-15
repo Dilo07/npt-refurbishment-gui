@@ -33,7 +33,9 @@
               "node_modules/@npt/npt-template/assets/styles/style.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/BrowserPrint-3.0.216.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -5,10 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Batch, Box } from '../domain/domain';
 import { Subscription } from 'rxjs';
-import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
-import { Device } from 'zebra-browser-print-wrapper/lib/types';
 import * as BrowserPrint from '../../../assets/BrowserPrint-3.0.216.min.js';
-
+declare var BrowserPrint: any;
 @Component({
   selector: 'app-historic',
   templateUrl: './historic.component.html',
@@ -22,6 +20,7 @@ import * as BrowserPrint from '../../../assets/BrowserPrint-3.0.216.min.js';
   ],
 })
 export class HistoricComponent implements OnInit, OnDestroy {
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public panelOpenState = false;
   public complete = true;
@@ -67,6 +66,11 @@ export class HistoricComponent implements OnInit, OnDestroy {
 
   public async print(): Promise<void> {
     console.log(BrowserPrint);
+    BrowserPrint.getDefaultDevice("printer", function(device)
+    {  alert(device);}
+    , function(error){
+      alert(error);
+    });
     /* const device: Device = {
       name: 'zebra',
       deviceType: 'printer',
