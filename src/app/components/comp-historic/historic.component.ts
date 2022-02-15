@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Batch, Box } from '../domain/domain';
 import { Subscription } from 'rxjs';
+import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
+import { Device } from 'zebra-browser-print-wrapper/lib/types';
 
 @Component({
   selector: 'app-historic',
@@ -60,6 +62,27 @@ export class HistoricComponent implements OnInit, OnDestroy {
     this.batchBoxService.genLotXML(id).subscribe(
       data => console.log(data)
     );
+  }
+
+  public async print(): Promise<void> {
+    const device: Device = {
+      name: 'zebra',
+      deviceType: 'printer',
+      connection: 'network',
+      uid: '192.168.60.202:9100',
+      provider: 'com.zebra.ds.webdriver.desktop.provider.DefaultDeviceProvider',
+      manufacturer: 'Zebra Technologies',
+      version: 0
+    };
+    const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`;
+    const zebra = new ZebraBrowserPrintWrapper();
+    /* const defaulPrinter = await zebra.getDefaultPrinter();
+    console.log(defaulPrinter); */
+    zebra.setPrinter(device);
+    const printerStatus = await zebra.checkPrinterStatus();
+    console.log(printerStatus);
+    /* zebra.print(zpl); */
+
   }
 
 }

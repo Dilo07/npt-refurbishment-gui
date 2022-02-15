@@ -2,9 +2,9 @@
   "be_url": "http://localhost:9094",
   "context_app": "",
   "viewOuter" : false,
+  "hideProfile": true,
   "flow_implicit": false,
   "supplierCode": "50014",
-  "hideProfile": true,
   "mail": "ciro.autiero@movyon.com",
   "no_auth": {
     "roles": [],
