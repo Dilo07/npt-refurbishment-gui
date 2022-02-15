@@ -8,7 +8,6 @@ import { WorkstationService } from '../service/workstation.service';
   providedIn: 'root'
 })
 export class WorkStationGuard implements CanActivate {
-  private guard = true;
   constructor(
     private router: Router,
     private workStationService: WorkstationService,
@@ -18,25 +17,27 @@ export class WorkStationGuard implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     const fingerId = localStorage.getItem('fingerId');
     const guId = localStorage.getItem('guId');
+    let guard = false;
     if (guId) {
-      this.guard = true;
-    } else {
+      guard = true;
+    } else if (fingerId) {
       this.workStationService.getWorkstation(fingerId).subscribe(
         data => {
           if (data) {
-            this.guard = true;
+            guard = true;
             this.sessionService.setSessionLocal('guId', data.id);
           } else {
-            this.router.navigate(['workstation-notfound']);
-            this.guard = false;
+            guard = false;
           }
         },
         () => {
-          this.router.navigate(['workstation-notfound']);
-          this.guard = false;
+          guard = false;
         }
       );
     }
-    return this.guard;
+    if (!guard) {
+      this.router.navigate(['workstation-notfound']);
+    }
+    return guard;
   }
 }
