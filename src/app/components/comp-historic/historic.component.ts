@@ -5,8 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Batch, Box } from '../domain/domain';
 import { Subscription } from 'rxjs';
-import * as BrowserPrint from '../../../assets/BrowserPrint-3.0.216.min.js';
-declare var BrowserPrint: any;
+
 @Component({
   selector: 'app-historic',
   templateUrl: './historic.component.html',
@@ -20,7 +19,7 @@ declare var BrowserPrint: any;
   ],
 })
 export class HistoricComponent implements OnInit, OnDestroy {
-  
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public panelOpenState = false;
   public complete = true;
@@ -50,45 +49,10 @@ export class HistoricComponent implements OnInit, OnDestroy {
     });
   }
 
-  public getBoxList(id: number): void {
-    this.subscription.push(this.batchBoxService.getBoxList(id).subscribe(
-      boxList => this.boxList = boxList,
-      () => null,
-      () => this.ngOnDestroy()
-    ));
-  }
-
   public sendXml(id: number): void {
     this.batchBoxService.genLotXML(id).subscribe(
       data => console.log(data)
     );
-  }
-
-  public async print(): Promise<void> {
-    console.log(BrowserPrint);
-    BrowserPrint.getDefaultDevice("printer", function(device)
-    {  alert(device);}
-    , function(error){
-      alert(error);
-    });
-    /* const device: Device = {
-      name: 'zebra',
-      deviceType: 'printer',
-      connection: 'network',
-      uid: '192.168.60.202:9100',
-      provider: 'com.zebra.ds.webdriver.desktop.provider.DefaultDeviceProvider',
-      manufacturer: 'Zebra Technologies',
-      version: 0
-    };
-    const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`;
-    const zebra = new ZebraBrowserPrintWrapper(); */
-    /* const defaulPrinter = await zebra.getDefaultPrinter();
-    console.log(defaulPrinter); */
-    /* zebra.setPrinter(device);
-    const printerStatus = await zebra.checkPrinterStatus();
-    console.log(printerStatus); */
-    /* zebra.print(zpl); */
-
   }
 
 }
