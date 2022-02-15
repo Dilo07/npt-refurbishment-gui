@@ -7,6 +7,7 @@ import { Batch, Box } from '../domain/domain';
 import { Subscription } from 'rxjs';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
 import { Device } from 'zebra-browser-print-wrapper/lib/types';
+import * as BrowserPrint from '../../../assets/BrowserPrint-3.0.216.min.js';
 
 @Component({
   selector: 'app-historic',
@@ -65,7 +66,8 @@ export class HistoricComponent implements OnInit, OnDestroy {
   }
 
   public async print(): Promise<void> {
-    const device: Device = {
+    console.log(BrowserPrint);
+    /* const device: Device = {
       name: 'zebra',
       deviceType: 'printer',
       connection: 'network',
@@ -75,12 +77,12 @@ export class HistoricComponent implements OnInit, OnDestroy {
       version: 0
     };
     const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`;
-    const zebra = new ZebraBrowserPrintWrapper();
+    const zebra = new ZebraBrowserPrintWrapper(); */
     /* const defaulPrinter = await zebra.getDefaultPrinter();
     console.log(defaulPrinter); */
-    zebra.setPrinter(device);
+    /* zebra.setPrinter(device);
     const printerStatus = await zebra.checkPrinterStatus();
-    console.log(printerStatus);
+    console.log(printerStatus); */
     /* zebra.print(zpl); */
 
   }
