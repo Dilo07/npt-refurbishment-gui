@@ -82,6 +82,8 @@
         "INSERT_OBUID": "Insert a correct obu id",
         "ICCID": "Insert icc Id",
         "INSERT_ICCID": "Insert a correct icc id",
+        "PRODATE": "Insert the product date",
+        "INSERT_PRODATE": "Insert a correct product date",
         "CLOUSURE": "Automatic clousure box",
         "OPENING": "Automatic open box",
         "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"

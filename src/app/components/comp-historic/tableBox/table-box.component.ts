@@ -36,15 +36,12 @@ export class TableBoxComponent implements OnChanges {
       boxList => this.dataSource.data = boxList
     ));
   }
+
   public async print(): Promise<void> {
-    /* BrowserPrint.getDefaultDevice('printer', function(device) { console.log(device) }
-      , function(error) {
-        alert(error);
-      }); */
     BrowserPrint.getDefaultDevice('printer', (device) => {
       console.log(device);
     });
-    BrowserPrint.getStatus((status) => {console.log(status)});
+    BrowserPrint.getStatus((status) => { console.log(status); });
     /* const device: Device = {
     name: 'zebra',
     deviceType: 'printer',
