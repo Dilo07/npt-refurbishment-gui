@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Box } from '../../domain/domain';
 import * as BrowserPrint from '../../../../assets/BrowserPrint-3.0.216.min.js';
-declare const BrowserPrint: any;
+declare const BrowserPrint: BrowserPrint;
 
 @Component({
   selector: 'app-table-box',
@@ -37,10 +37,14 @@ export class TableBoxComponent implements OnChanges {
     ));
   }
   public async print(): Promise<void> {
-    BrowserPrint.getDefaultDevice('printer', function(device) { console.log(device) }
+    /* BrowserPrint.getDefaultDevice('printer', function(device) { console.log(device) }
       , function(error) {
         alert(error);
-      });
+      }); */
+    BrowserPrint.getDefaultDevice('printer', (device) => {
+      console.log(device);
+    });
+    BrowserPrint.getStatus((status) => {console.log(status)});
     /* const device: Device = {
     name: 'zebra',
     deviceType: 'printer',
