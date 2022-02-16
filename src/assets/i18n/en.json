@@ -90,7 +90,12 @@
     },
     "HISTORIC": {
         "ERROR_PRINT": "Printer unavailable",
-        "PRINT": "Print label"
+        "PRINT": "Print label",
+        "LOTNUM": "Lot number",
+        "DATESTART": "Start date lot",
+        "DATEEND": "End date lot",
+        "DATEINS": "Date insert",
+        "DATECLOSE": "Date close"
     },
     "HARDWARE": {
         "1": "Obu Go",

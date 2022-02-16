@@ -21,7 +21,7 @@
             </ng-container>
 
             <ng-container matColumnDef="lotNumber">
-                <th mat-header-cell *matHeaderCellDef> Num. Lotto </th>
+                <th mat-header-cell *matHeaderCellDef> {{'HISTORIC.LOTNUM' | translate}} </th>
                 <td mat-cell *matCellDef="let element">
                     {{element.sequenceNumber + '/' + element.yearNumber + '/' + element.supplierCode}}
                 </td>
@@ -33,12 +33,12 @@
             </ng-container>
 
             <ng-container matColumnDef="dateIns">
-                <th mat-header-cell *matHeaderCellDef> Data inizio lotto </th>
+                <th mat-header-cell *matHeaderCellDef> {{'HISTORIC.DATESTART' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> {{element.dateIns | date: 'dd/mm/YYYY HH:mm'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="dateClose">
-                <th mat-header-cell *matHeaderCellDef> Data fine lotto </th>
+                <th mat-header-cell *matHeaderCellDef> {{'HISTORIC.DATEEND' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> {{element.dateClose | date: 'dd/mm/YYYY HH:mm'}} </td>
             </ng-container>
 

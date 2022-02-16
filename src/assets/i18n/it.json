@@ -90,7 +90,12 @@
     },
     "HISTORIC": {
         "ERROR_PRINT": "Stampanta non disponibile",
-        "PRINT": "Stampa etichetta"
+        "PRINT": "Stampa etichetta",
+        "LOTNUM": "Num. lotto",
+        "DATESTART": "Data inizio lotto",
+        "DATEEND": "Data fine lotto",
+        "DATEINS": "Data inserimento",
+        "DATECLOSE": "Data chiusura"
     },
     "HARDWARE": {
         "1": "Obu Go",
