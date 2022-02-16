@@ -45,9 +45,10 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button *ngIf="!element.dateGenXML" (click)="sendXml(element.id)">
+                    <button mat-icon-button *ngIf="!element.dateGenXML else dateGen" (click)="sendXml(element.id)">
                         <mat-icon matTooltip="Invia xml">send</mat-icon>
                     </button>
+                    <ng-template #dateGen>{{element.dateGenXML | date: 'dd/mm/YYYY HH:mm'}}</ng-template>
                 </td>
             </ng-container>
 

@@ -26,7 +26,6 @@ export class HistoricComponent implements OnInit, OnDestroy {
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose', 'action'];
-  public boxList: Box[] = [];
 
   private subscription: Subscription[] = [];
 
@@ -35,12 +34,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.complete = false;
-    this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
-      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
-      () => this.complete = true,
-      () => this.complete = true
-    ));
+    this.getLotList();
   }
 
   ngOnDestroy(): void {
@@ -51,8 +45,19 @@ export class HistoricComponent implements OnInit, OnDestroy {
 
   public sendXml(id: number): void {
     this.batchBoxService.genLotXML(id).subscribe(
-      data => console.log(data)
+      () => null,
+      () => null,
+      () => this.getLotList()
     );
+  }
+
+  private getLotList(): void {
+    this.complete = false;
+    this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
+      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
+      () => this.complete = true,
+      () => this.complete = true
+    ));
   }
 
 }
