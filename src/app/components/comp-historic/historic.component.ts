@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Batch, Box } from '../domain/domain';
 import { Subscription } from 'rxjs';
+import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
+import { Device } from 'zebra-browser-print-wrapper/lib/types';
 
 @Component({
   selector: 'app-historic',
@@ -26,6 +28,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose', 'action'];
+  public zebra = new ZebraBrowserPrintWrapper();
 
   private subscription: Subscription[] = [];
 
@@ -34,6 +37,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.setPrinter();
     this.getLotList();
   }
 
@@ -58,6 +62,15 @@ export class HistoricComponent implements OnInit, OnDestroy {
       () => this.complete = true,
       () => this.complete = true
     ));
+  }
+
+  private async setPrinter(): Promise<void> {
+    const availablePrinter = await this.zebra.getAvailablePrinters();
+    availablePrinter.forEach((printer: Device) => {
+      if(printer.name === 'zebra'){
+        this.zebra.setPrinter(printer);
+      }
+    });
   }
 
 }

@@ -4,7 +4,6 @@ import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
-import { Device } from 'zebra-browser-print-wrapper/lib/types';
 import { Box } from '../../domain/domain';
 
 @Component({
@@ -19,6 +18,7 @@ import { Box } from '../../domain/domain';
 })
 export class TableBoxComponent implements OnChanges {
   @Input() idBox: number;
+  @Input() printer: ZebraBrowserPrintWrapper; // arriva una printer già settata
   public dataSource = new MatTableDataSource<Box>();
   public displayedColumns: string[] = ['id', 'workstationId', 'dateIns', 'dateClose', 'actions'];
 
@@ -35,7 +35,9 @@ export class TableBoxComponent implements OnChanges {
 
   public getBoxList(id: number): void {
     this.subscription.push(this.batchBoxService.getBoxList(id).subscribe(
-      boxList => this.dataSource.data = boxList
+      boxList => this.dataSource.data = boxList,
+      () => null,
+      () => null
     ));
   }
 
@@ -49,30 +51,14 @@ export class TableBoxComponent implements OnChanges {
   }
 
   private async callPrinter(zpl: string): Promise<void> {
-    /* const device: Device = {
-      name: 'zebra',
-      deviceType: 'printer',
-      connection: 'network',
-      uid: '192.168.60.202:9100',
-      provider: 'com.zebra.ds.webdriver.desktop.provider.DefaultDeviceProvider',
-      manufacturer: 'Zebra Technologies',
-      version: 0
-    }; */
-    const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`;
-    const zebra = new ZebraBrowserPrintWrapper();
+    /* const zebra = new ZebraBrowserPrintWrapper(); */
     /* const defaulPrinter = await zebra.getDefaultPrinter();
     console.log(defaulPrinter); */
-    const availablePrinter: Device[] = await zebra.getAvailablePrinters();
-    console.log(availablePrinter);
-    availablePrinter.forEach(printer => {
-      if(printer.name === 'zebra'){
-        zebra.setPrinter(printer);
-      }
-    });
-    const printerStatus = await zebra.checkPrinterStatus();
+    /* const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`; */
+    const printerStatus = await this.printer.checkPrinterStatus();
     console.log(printerStatus);
     if( printerStatus.isReadyToPrint){
-      /* zebra.print(zpl); */
+      /* this.printer.print(zpl); */
     }else {
       this.snackBar.showMessage(printerStatus.errors, 'ERROR');
     }

@@ -88,6 +88,10 @@
         "OPENING": "Apertura scatola automatica",
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
+    "HISTORIC": {
+        "ERROR_PRINT": "Stampanta non disponibile",
+        "PRINT": "Stampa etichetta"
+    },
     "HARDWARE": {
         "1": "Obu Go",
         "2": "Even x",

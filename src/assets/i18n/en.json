@@ -88,6 +88,10 @@
         "OPENING": "Automatic open box",
         "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
     },
+    "HISTORIC": {
+        "ERROR_PRINT": "Printer unavailable",
+        "PRINT": "Print label"
+    },
     "HARDWARE": {
         "1": "Obu Go",
         "2": "Even x",
