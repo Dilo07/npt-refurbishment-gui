@@ -1,12 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { BatchBoxService } from 'src/app/service/batch-box.service';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Batch, Box } from '../domain/domain';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
-import { Device } from 'zebra-browser-print-wrapper/lib/types';
+import { BatchBoxService } from 'src/app/service/batch-box.service';
+import { Batch } from '../domain/domain';
 
 @Component({
   selector: 'app-historic',
@@ -28,7 +26,6 @@ export class HistoricComponent implements OnInit, OnDestroy {
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose', 'action'];
-  public zebra = new ZebraBrowserPrintWrapper();
 
   private subscription: Subscription[] = [];
 
@@ -37,7 +34,6 @@ export class HistoricComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.setPrinter();
     this.getLotList();
   }
 
@@ -62,17 +58,6 @@ export class HistoricComponent implements OnInit, OnDestroy {
       () => this.complete = true,
       () => this.complete = true
     ));
-  }
-
-  private async setPrinter(): Promise<void> {
-    /* const defaulPrinter = await zebra.getDefaultPrinter();
-    console.log(defaulPrinter); */
-    const availablePrinter = await this.zebra.getAvailablePrinters();
-    availablePrinter.forEach((printer: Device) => {
-      if(printer.name === 'zebra'){
-        this.zebra.setPrinter(printer);
-      }
-    });
   }
 
 }

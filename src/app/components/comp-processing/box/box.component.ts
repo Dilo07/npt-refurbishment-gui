@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
+import { PrintService } from 'src/app/service/print.service';
 import { Batch, Box, Obu } from '../../domain/domain';
 
 @Component({
@@ -26,7 +27,8 @@ export class BoxComponent implements OnInit, OnDestroy {
 
   constructor(
     private snackBar: SnackBar,
-    private batchBoxService: BatchBoxService
+    private batchBoxService: BatchBoxService,
+    private printerService: PrintService
   ) { }
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class BoxComponent implements OnInit, OnDestroy {
 
   public closeBox(): void {
     // chiude la scatola se il box di ritorno è null richiama i lotti
-    this.subscription.push(this.batchBoxService.closeBox(this.opening).subscribe(
+    this.batchBoxService.closeBox(this.opening).subscribe(
       box => {
         if (!box) {
           this.boxTerminate.emit();
@@ -83,16 +85,16 @@ export class BoxComponent implements OnInit, OnDestroy {
         this.printLabelBox(this.actualBox.id);
         this.actualBox = box;
       }
-    ));
+    );
   }
 
   private printLabelBox(idBox: number): void {
     console.log(idBox);
-    this.subscription.push(this.batchBoxService.getBoxLabel(idBox).subscribe(
-      data => null,
+    this.batchBoxService.getBoxLabel(idBox).subscribe(
+      zpl => this.printerService.sendPrint(zpl),
       () => null,
       () => null
-    ));
+    );
   }
 
 }

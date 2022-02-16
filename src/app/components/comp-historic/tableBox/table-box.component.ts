@@ -1,9 +1,9 @@
-import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
-import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
+import { PrintService } from 'src/app/service/print.service';
 import { Box } from '../../domain/domain';
 
 @Component({
@@ -18,7 +18,6 @@ import { Box } from '../../domain/domain';
 })
 export class TableBoxComponent implements OnChanges {
   @Input() idBox: number;
-  @Input() printer: ZebraBrowserPrintWrapper; // arriva una printer già settata
   public dataSource = new MatTableDataSource<Box>();
   public displayedColumns: string[] = ['id', 'workstationId', 'dateIns', 'dateClose', 'actions'];
 
@@ -27,6 +26,7 @@ export class TableBoxComponent implements OnChanges {
   constructor(
     private batchBoxService: BatchBoxService,
     private snackBar: SnackBar,
+    private printerService: PrintService,
     @Inject('disablePrintData') private disablePrint: boolean
   ) { }
 
@@ -43,22 +43,12 @@ export class TableBoxComponent implements OnChanges {
   }
 
   public print(idBox: number): void {
-    let zpl: string;
     this.subscription.push(this.batchBoxService.getBoxLabel(idBox).subscribe(
-      data => zpl = data,
+      (zpl) => this.printerService.sendPrint(zpl),
       () => null,
-      () => this.callPrinter(zpl)
+      () => null
     ));
   }
+  /* const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`; */
 
-  private async callPrinter(zpl: string): Promise<void> {
-    /* const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`; */
-    const printerStatus = await this.printer.checkPrinterStatus();
-    console.log(printerStatus);
-    if (printerStatus.isReadyToPrint) {
-      if (!this.disablePrint) { this.printer.print(zpl); };
-    } else {
-      this.snackBar.showMessage(printerStatus.errors, 'ERROR');
-    }
-  }
 }
