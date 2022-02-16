@@ -76,25 +76,24 @@ export class BoxComponent implements OnInit, OnDestroy {
   }
 
   public closeBox(): void {
+    this.printLabelBox(this.actualBox.id);
     // chiude la scatola se il box di ritorno è null richiama i lotti
-    this.batchBoxService.closeBox(this.opening).subscribe(
+    this.subscription.push(this.batchBoxService.closeBox(this.opening).subscribe(
       box => {
         if (!box) {
           this.boxTerminate.emit();
         }
-        this.printLabelBox(this.actualBox.id);
         this.actualBox = box;
       }
-    );
+    ));
   }
 
   private printLabelBox(idBox: number): void {
-    console.log(idBox);
-    this.batchBoxService.getBoxLabel(idBox).subscribe(
+    this.subscription.push(this.batchBoxService.getBoxLabel(idBox).subscribe(
       zpl => this.printerService.sendPrint(zpl),
       () => null,
       () => null
-    );
+    ));
   }
 
 }
