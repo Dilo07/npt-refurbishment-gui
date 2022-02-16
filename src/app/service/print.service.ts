@@ -28,7 +28,7 @@ export class PrintService {
   }
 
   private async setPrinter(): Promise<void> {
-    /* const defaulPrinter = await zebra.getDefaultPrinter();
+    /* const defaulPrinter = await this.zebra.getDefaultPrinter();
     console.log(defaulPrinter); */
     const availablePrinter = await this.zebra.getAvailablePrinters();
     availablePrinter.forEach((printer: Device) => {
