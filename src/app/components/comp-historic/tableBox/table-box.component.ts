@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
@@ -24,7 +25,8 @@ export class TableBoxComponent implements OnChanges {
   private subscription: Subscription[] = [];
 
   constructor(
-    private batchBoxService: BatchBoxService
+    private batchBoxService: BatchBoxService,
+    private snackBar: SnackBar
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,8 +49,7 @@ export class TableBoxComponent implements OnChanges {
   }
 
   private async callPrinter(zpl: string): Promise<void> {
-    console.log(zpl);
-    const device: Device = {
+    /* const device: Device = {
       name: 'zebra',
       deviceType: 'printer',
       connection: 'network',
@@ -56,15 +57,24 @@ export class TableBoxComponent implements OnChanges {
       provider: 'com.zebra.ds.webdriver.desktop.provider.DefaultDeviceProvider',
       manufacturer: 'Zebra Technologies',
       version: 0
-    };
-    /* const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`; */
+    }; */
+    const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`;
     const zebra = new ZebraBrowserPrintWrapper();
-    const defaulPrinter = await zebra.getDefaultPrinter();
-    console.log(defaulPrinter);
-    console.log(device);
-    zebra.setPrinter(device);
+    /* const defaulPrinter = await zebra.getDefaultPrinter();
+    console.log(defaulPrinter); */
+    const availablePrinter: Device[] = await zebra.getAvailablePrinters();
+    console.log(availablePrinter);
+    availablePrinter.forEach(printer => {
+      if(printer.name === 'zebra'){
+        zebra.setPrinter(printer);
+      }
+    });
     const printerStatus = await zebra.checkPrinterStatus();
     console.log(printerStatus);
-    /* zebra.print(zpl); */
+    if( printerStatus.isReadyToPrint){
+      /* zebra.print(zpl); */
+    }else {
+      this.snackBar.showMessage(printerStatus.errors, 'ERROR');
+    }
   }
 }
