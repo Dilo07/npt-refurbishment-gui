@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PrintService } from 'src/app/service/print.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
-  constructor() {}
+  // inizializzazione stampante
+  constructor(private printService: PrintService) {}
 
 }

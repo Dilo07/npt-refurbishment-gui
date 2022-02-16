@@ -1,10 +1,10 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { BatchBoxService } from 'src/app/service/batch-box.service';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Batch, Box } from '../domain/domain';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { BatchBoxService } from 'src/app/service/batch-box.service';
+import { Batch } from '../domain/domain';
 
 @Component({
   selector: 'app-historic',
@@ -19,13 +19,13 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class HistoricComponent implements OnInit, OnDestroy {
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public panelOpenState = false;
   public complete = true;
   public expandedElement: Batch | null;
   public dataSource = new MatTableDataSource<Batch>();
   public displayedColumns: string[] = ['expandButton', 'id', 'lotNumber', 'hardware', 'dateIns', 'dateClose', 'action'];
-  public boxList: Box[] = [];
 
   private subscription: Subscription[] = [];
 
@@ -34,12 +34,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.complete = false;
-    this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
-      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
-      () => this.complete = true,
-      () => this.complete = true
-    ));
+    this.getLotList();
   }
 
   ngOnDestroy(): void {
@@ -48,18 +43,21 @@ export class HistoricComponent implements OnInit, OnDestroy {
     });
   }
 
-  public getBoxList(id: number): void {
-    this.subscription.push(this.batchBoxService.getBoxList(id).subscribe(
-      boxList => this.boxList = boxList,
-      () => null,
-      () => this.ngOnDestroy()
-    ));
-  }
-
   public sendXml(id: number): void {
     this.batchBoxService.genLotXML(id).subscribe(
-      data => console.log(data)
+      () => null,
+      () => null,
+      () => this.getLotList()
     );
+  }
+
+  private getLotList(): void {
+    this.complete = false;
+    this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
+      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
+      () => this.complete = true,
+      () => this.complete = true
+    ));
   }
 
 }

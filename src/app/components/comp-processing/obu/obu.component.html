@@ -1,12 +1,17 @@
 <div fxLayout="column" fxLayoutGap="40px">
     <form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
         <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
-            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                 <mat-label>{{'BOX.OBUID' | translate}}</mat-label>
-                <input matInput type="text" formControlName="ctrlObuId" required maxlength="24" (change)="addObu()">
+                <input matInput type="text" formControlName="ctrlObuId" required maxlength="{{isArianI ? 15 : 24}}" (change)="addObu()">
                 <mat-error>{{'BOX.INSERT_OBUID' | translate}}</mat-error>
             </mat-form-field>
-            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="40" fxFlex.gt-md="40">
+            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30" *ngIf="isArianI">
+                <mat-label>{{'BOX.PRODATE' | translate}}</mat-label>
+                <input matInput type="text" formControlName="ctrlProductDate" required maxlength="4" (change)="addObu()">
+                <mat-error>{{'BOX.INSERT_PRODATE' | translate}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
                 <mat-label>{{'BOX.ICCID' | translate}}</mat-label>
                 <input matInput type="text" formControlName="ctrlIccId" required maxlength="19" (change)="addObu()">
                 <mat-error>{{'BOX.INSERT_ICCID' | translate}}</mat-error>

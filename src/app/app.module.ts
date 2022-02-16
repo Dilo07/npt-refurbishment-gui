@@ -39,6 +39,11 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     }),
   ],
   providers: [
+    { provide: 'disablePrint', useValue: 'disablePrint'},
+    {
+      provide: 'disablePrintData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['disablePrint', ConfigInitService]
+    },
     { provide: 'mail', useValue: 'mail'},
     {
       provide: 'mailData',
@@ -48,11 +53,6 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     {
       provide: 'supplierCodeData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['supplierCode', ConfigInitService]
-    },
-    { provide: 'hideProfile', useValue: 'hideProfile' },
-    {
-      provide: 'hideProfileData',
-      useFactory: getPropertyFromConfig, multi: false, deps: ['hideProfile', ConfigInitService]
     },
     // npt template
     { provide: 'menuService', useClass: MenuItemService },

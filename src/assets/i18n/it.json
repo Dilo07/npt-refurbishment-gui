@@ -31,7 +31,10 @@
         "BE_ERROR": "Servizi non raggiungibili"
     },
     "error": {
-        "generic": "Errore lato server"
+        "generic": "Errore lato server",
+        "lot": {
+            "full": "Lotto pieno"
+        }
     },
     "PAGINATOR": {
         "ITEM": "Elementi per pagina",
@@ -79,9 +82,20 @@
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",
         "INSERT_ICCID": "Inserisci un icc id corretto",
+        "PRODATE": "Inserisci il product date",
+        "INSERT_PRODATE": "Inserisci un product date corretto",
         "CLOUSURE": "Chiusura scatola automatica",
         "OPENING": "Apertura scatola automatica",
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
+    },
+    "HISTORIC": {
+        "ERROR_PRINT": "Stampanta non disponibile",
+        "PRINT": "Stampa etichetta",
+        "LOTNUM": "Num. lotto",
+        "DATESTART": "Data inizio lotto",
+        "DATEEND": "Data fine lotto",
+        "DATEINS": "Data inserimento",
+        "DATECLOSE": "Data chiusura"
     },
     "HARDWARE": {
         "1": "Obu Go",

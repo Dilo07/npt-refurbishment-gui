@@ -43,7 +43,7 @@ export class BatchBoxService {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       params: HttpUtils.createHttpParams({ ws: guId })
     };
-    return this.http.post<Box>(this.apiUrl + '/box', null, options)
+    return this.http.post<Box>(this.apiUrl + 'box', null, options)
       .pipe(catchError(err => { throw err; }));
   }
 
@@ -75,22 +75,22 @@ export class BatchBoxService {
   // historic
 
   getBoxList(id: number): Observable<Box[]> {
-    return this.http.get<Box[]>(this.apiUrl + `/lot/${id}/box/list`)
+    return this.http.get<Box[]>(this.apiUrl + `lot/${id}/box/list`)
       .pipe(catchError(err => { throw err; }));
   }
 
   genLotXML(id: number): Observable<void> {
-    return this.http.put<void>(this.apiUrl + `/lot/${id}/xml`, null)
+    return this.http.put<void>(this.apiUrl + `lot/${id}/xml`, null)
       .pipe(catchError(err => { throw err; }));
   }
 
-  getBoxLabel(id: number): Observable<void> {
-    return this.http.get<void>(this.apiUrl + `/box/${id}/label`)
+  getBoxLabel(id: number): Observable<string> {
+    return this.http.get<string>(this.apiUrl + `box/${id}/label`)
       .pipe(catchError(err => { throw err; }));
   }
 
   genBoxLabel(id: number): Observable<void> {
-    return this.http.put<void>(this.apiUrl + `/box/${id}/label`, null)
+    return this.http.put<void>(this.apiUrl + `box/${id}/label`, null)
       .pipe(catchError(err => { throw err; }));
   }
 }

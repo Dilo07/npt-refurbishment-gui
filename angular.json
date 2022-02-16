@@ -23,7 +23,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "allowedCommonJsDependencies": [
-              "keycloak-js"
+              "keycloak-js",
+              "zebra-browser-print-wrapper"
             ],
             "assets": [
               "src/favicon.ico",
