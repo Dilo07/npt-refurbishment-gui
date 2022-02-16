@@ -6,6 +6,7 @@
   "flow_implicit": false,
   "supplierCode": "50014",
   "mail": "ciro.autiero@movyon.com",
+  "disablePrint": true,
   "no_auth": {
     "roles": [],
     "user": {

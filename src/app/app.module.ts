@@ -39,6 +39,11 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     }),
   ],
   providers: [
+    { provide: 'disablePrint', useValue: 'disablePrint'},
+    {
+      provide: 'disablePrintData',
+      useFactory: getPropertyFromConfig, multi: false, deps: ['disablePrint', ConfigInitService]
+    },
     { provide: 'mail', useValue: 'mail'},
     {
       provide: 'mailData',

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
@@ -26,7 +26,8 @@ export class TableBoxComponent implements OnChanges {
 
   constructor(
     private batchBoxService: BatchBoxService,
-    private snackBar: SnackBar
+    private snackBar: SnackBar,
+    @Inject('disablePrintData') private disablePrint: boolean
   ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -57,9 +58,9 @@ export class TableBoxComponent implements OnChanges {
     /* const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`; */
     const printerStatus = await this.printer.checkPrinterStatus();
     console.log(printerStatus);
-    if( printerStatus.isReadyToPrint){
-      /* this.printer.print(zpl); */
-    }else {
+    if (printerStatus.isReadyToPrint) {
+      if (!this.disablePrint) { this.printer.print(zpl); };
+    } else {
       this.snackBar.showMessage(printerStatus.errors, 'ERROR');
     }
   }
