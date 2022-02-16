@@ -84,8 +84,8 @@ export class BatchBoxService {
       .pipe(catchError(err => { throw err; }));
   }
 
-  getBoxLabel(id: number): Observable<void> {
-    return this.http.get<void>(this.apiUrl + `box/${id}/label`)
+  getBoxLabel(id: number): Observable<string> {
+    return this.http.get<string>(this.apiUrl + `box/${id}/label`)
       .pipe(catchError(err => { throw err; }));
   }
 

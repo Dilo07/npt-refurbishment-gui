@@ -5,10 +5,6 @@ import { BatchBoxService } from 'src/app/service/batch-box.service';
 import ZebraBrowserPrintWrapper from 'zebra-browser-print-wrapper';
 import { Device } from 'zebra-browser-print-wrapper/lib/types';
 import { Box } from '../../domain/domain';
-/* import * as BrowserPrint from '../../../../assets/BrowserPrint-3.0.216.min.js';
-import * as PrintStatus from '../../../../assets/BrowserPrint-Zebra-1.0.216.min.js';
-declare const BrowserPrint: BrowserPrint;
-declare const PrintStatus: PrintStatus; */
 
 @Component({
   selector: 'app-table-box',
@@ -41,16 +37,17 @@ export class TableBoxComponent implements OnChanges {
     ));
   }
 
-  public async print(): Promise<void> {
-    /*  let device: any;
-     BrowserPrint.getDefaultDevice('printer', (deviceResp) => {
-       device = deviceResp;
-       console.log(device);
-     });
-     device.sendFile('^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ', (data) => {
-       console.log(data)
-     }) */
-    /* PrintStatus.getStatus.then(data => console.log(data)) */
+  public print(idBox: number): void {
+    let zpl: string;
+    this.subscription.push(this.batchBoxService.getBoxLabel(idBox).subscribe(
+      data => zpl = data,
+      () => null,
+      () => this.callPrinter(zpl)
+    ));
+  }
+
+  private async callPrinter(zpl: string): Promise<void> {
+    console.log(zpl);
     const device: Device = {
       name: 'zebra',
       deviceType: 'printer',
@@ -60,9 +57,10 @@ export class TableBoxComponent implements OnChanges {
       manufacturer: 'Zebra Technologies',
       version: 0
     };
-    const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`;
+    /* const zpl = `^XA ^BY2,2,100 ^FO20,20^BC^FD001^FS ^XZ`; */
     const zebra = new ZebraBrowserPrintWrapper();
     const defaulPrinter = await zebra.getDefaultPrinter();
+    console.log(defaulPrinter);
     console.log(device);
     zebra.setPrinter(device);
     const printerStatus = await zebra.checkPrinterStatus();
