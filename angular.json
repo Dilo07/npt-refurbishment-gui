@@ -23,7 +23,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "allowedCommonJsDependencies": [
-              "keycloak-js"
+              "keycloak-js",
+              "zebra-browser-print-wrapper"
             ],
             "assets": [
               "src/favicon.ico",
@@ -33,10 +34,7 @@
               "node_modules/@npt/npt-template/assets/styles/style.scss",
               "src/styles.css"
             ],
-            "scripts": [
-              "src/assets/BrowserPrint-3.0.216.min.js",
-              "src/assets/BrowserPrint-Zebra-1.0.216.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -99,10 +97,7 @@
               "node_modules/@npt/npt-template/assets/styles/style.scss",
               "src/styles.css"
             ],
-            "scripts": [
-              "src/assets/BrowserPrint-3.0.216.min.js",
-              "src/assets/BrowserPrint-Zebra-1.0.216.min.js"
-            ]
+            "scripts": []
           }
         },
         "lint": {
