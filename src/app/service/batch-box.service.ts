@@ -43,7 +43,7 @@ export class BatchBoxService {
       headers: new HttpHeaders().set('Content-Type', 'application/json'),
       params: HttpUtils.createHttpParams({ ws: guId })
     };
-    return this.http.post<Box>(this.apiUrl + '/box', null, options)
+    return this.http.post<Box>(this.apiUrl + 'box', null, options)
       .pipe(catchError(err => { throw err; }));
   }
 

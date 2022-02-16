@@ -47,6 +47,7 @@ export class BatchComponent implements OnInit, OnDestroy {
           this.activeBatch = list;
           this.batchOpen = true;
         } else {
+          // se non ci sono lotti aperti chiama la sequence, se viene da una scatola chiusa chiama la snackbar
           this.batchOpen = false;
           this.getLotSequence();
           if (verifyEnd) {
