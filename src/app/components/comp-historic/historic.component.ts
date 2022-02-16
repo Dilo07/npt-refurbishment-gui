@@ -65,6 +65,8 @@ export class HistoricComponent implements OnInit, OnDestroy {
   }
 
   private async setPrinter(): Promise<void> {
+    /* const defaulPrinter = await zebra.getDefaultPrinter();
+    console.log(defaulPrinter); */
     const availablePrinter = await this.zebra.getAvailablePrinters();
     availablePrinter.forEach((printer: Device) => {
       if(printer.name === 'zebra'){

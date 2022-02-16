@@ -52,9 +52,6 @@ export class TableBoxComponent implements OnChanges {
   }
 
   private async callPrinter(zpl: string): Promise<void> {
-    /* const zebra = new ZebraBrowserPrintWrapper(); */
-    /* const defaulPrinter = await zebra.getDefaultPrinter();
-    console.log(defaulPrinter); */
     /* const zplTest = `^XA^FO120,120^BY3,3,100^BCN,100,Y,N,N^AD,60^FDSAT22-000092-50014^FS^XZ`; */
     const printerStatus = await this.printer.checkPrinterStatus();
     console.log(printerStatus);
