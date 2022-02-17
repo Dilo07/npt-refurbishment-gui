@@ -34,6 +34,9 @@
         "generic": "Error server site",
         "lot": {
             "full": "Lot full"
+        },
+        "ws": {
+            "not_found": "Invalivd finger Id"
         }
     },
     "PAGINATOR": {

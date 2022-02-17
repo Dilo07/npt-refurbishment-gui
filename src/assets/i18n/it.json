@@ -34,6 +34,9 @@
         "generic": "Errore lato server",
         "lot": {
             "full": "Lotto pieno"
+        },
+        "ws": {
+            "not_found": "Finger Id non valido"
         }
     },
     "PAGINATOR": {
@@ -64,7 +67,7 @@
         "BATCH_CREATE": "Lotto creato correttamente",
         "BATCH_END": "Lotto terminato"
     },
-    "BOX":{
+    "BOX": {
         "BOX": "Scatola",
         "BOX_OPEN": "Scatole aperte",
         "TITLE": "Lavorazione scatola",
