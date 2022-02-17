@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { PrintService } from './service/print.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private printService: PrintService // inizializzazione stampante
   ) { }
 
   ngOnInit(): void {

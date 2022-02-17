@@ -20,8 +20,7 @@ export class PrintService {
     const printerStatus = await this.zebra.checkPrinterStatus();
     console.log(printerStatus);
     if (printerStatus.isReadyToPrint) {
-      if (!this.disablePrint) { this.zebra.print(zpl); };
-      console.log(zpl);
+      if (!this.disablePrint) { this.zebra.print(zpl); console.log(zpl);};
     } else {
       this.snackBar.showMessage(printerStatus.errors, 'ERROR');
     }
