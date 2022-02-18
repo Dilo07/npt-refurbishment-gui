@@ -9,13 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ObuComponent } from './obu/obu.component';
+import { EditModalComponent } from './obu/edit-modal/edit-modal.component';
 
 
 @NgModule({
   declarations: [
     BoxComponent,
     BatchComponent,
-    ObuComponent
+    ObuComponent,
+    EditModalComponent
   ],
   imports: [
     CommonModule,
