@@ -35,6 +35,9 @@
         "lot": {
             "full": "Lotto pieno"
         },
+        "box": {
+            "full": "Scatola piena"
+        },
         "ws": {
             "not_found": "Finger Id non valido"
         }

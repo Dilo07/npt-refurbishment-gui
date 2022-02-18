@@ -35,6 +35,9 @@
         "lot": {
             "full": "Lot full"
         },
+        "box": {
+            "full": "Box full"
+        },
         "ws": {
             "not_found": "Invalivd finger Id"
         }
