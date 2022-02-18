@@ -62,6 +62,11 @@ export class BatchBoxService {
       .pipe(catchError(err => { throw err; }));
   }
 
+  editObu(obu: Obu): Observable<void> {
+    return this.http.put<void>(this.apiUrl + 'obu/edit', obu)
+      .pipe(catchError(err => { throw err; }));
+  }
+
   closeBox(opening: boolean): Observable<Box> {
     const guId = localStorage.getItem('guId');
     const options = {

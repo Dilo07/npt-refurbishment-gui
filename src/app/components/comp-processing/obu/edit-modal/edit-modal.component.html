@@ -14,5 +14,5 @@
 </form>
 <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
     <button mat-button class="backButton" (click)="dialogRef.close(false)">annulla</button>
-    <button mat-button class="greenButton" [disabled]="formGroup.invalid || !formGroup.dirty">modifica</button>
+    <button mat-button class="greenButton" [disabled]="formGroup.invalid || !formGroup.dirty" (click)="editObu()">modifica</button>
 </div>
