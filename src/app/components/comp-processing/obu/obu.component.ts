@@ -58,10 +58,10 @@ export class ObuComponent implements OnInit {
     }
   }
 
-  editObu(obu: Obu): void{
+  editObu(obu: Obu): void {
     this.dialog.open(EditModalComponent, {
       width: '50%',
-      height: '50%',
+      height: '40%',
       data: obu
     });
   }

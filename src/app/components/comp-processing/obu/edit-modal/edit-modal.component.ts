@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Obu } from 'src/app/components/domain/domain';
 
 @Component({
@@ -9,13 +10,20 @@ import { Obu } from 'src/app/components/domain/domain';
   ]
 })
 export class EditModalComponent implements OnInit {
+  public formGroup: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<EditModalComponent>,
     @Inject(MAT_DIALOG_DATA) public obu: Obu
   ) { }
 
   ngOnInit(): void {
     console.log(this.obu);
+    this.formGroup = this.formBuilder.group({
+      ctrlObuId: [this.obu.extendedObuId, [Validators.pattern(/^\d+$/), Validators.minLength(24), Validators.maxLength(24)]],
+      ctrlIccId: [this.obu.iccId, [Validators.pattern(/^\d+$/), Validators.minLength(19), Validators.maxLength(19)]]
+    });
   }
 
 }

@@ -1,1 +1,18 @@
-<p>edit-modal works!</p>
+<form [formGroup]="formGroup" fxLayout="column" fxLayoutGap="20px">
+    <section fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="center">
+        <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+            <mat-label>{{'BOX.OBUID' | translate}}</mat-label>
+            <input matInput type="text" formControlName="ctrlObuId" required maxlength="24">
+            <mat-error>{{'BOX.INSERT_OBUID' | translate}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="100" fxFlex.gt-xs="100" fxFlex.gt-lg="30" fxFlex.gt-md="30">
+            <mat-label>{{'BOX.ICCID' | translate}}</mat-label>
+            <input matInput type="text" formControlName="ctrlIccId" required maxlength="19">
+            <mat-error>{{'BOX.INSERT_ICCID' | translate}}</mat-error>
+        </mat-form-field>
+    </section>
+</form>
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+    <button mat-button class="backButton" (click)="dialogRef.close(false)">annulla</button>
+    <button mat-button class="greenButton" [disabled]="formGroup.invalid || !formGroup.dirty">modifica</button>
+</div>
