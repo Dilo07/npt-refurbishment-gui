@@ -73,7 +73,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
     // invia il lotto e cambia componente nella view
     this.subscription.push(this.batchBoxService.addBatch(formBatch).subscribe(
-      (lot) => this.activeBatch.push(lot),
+      (lot) => this.activeBatch = [lot],
       () => null,
       () => this.snackBar.showMessage('PROCESSING.BATCH_CREATE', 'INFO')
     ));
