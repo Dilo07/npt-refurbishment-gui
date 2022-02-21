@@ -60,7 +60,6 @@ export class BoxComponent implements OnInit, OnDestroy {
     this.subscription.push(this.batchBoxService.addObu(obu, this.closure, this.opening).subscribe(
       box => {
         if (!box) {
-
           this.boxTerminate.emit();
         }
         if (this.actualBox.id !== box?.id) { this.printLabelBox(this.actualBox.id); }

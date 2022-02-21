@@ -29,10 +29,13 @@ export class EditModalComponent implements OnInit {
 
   editObu(): void {
     const obu = new Obu();
+    obu.id = this.obu.id;
     obu.extendedObuId = this.formGroup.get('ctrlObuId').value;
     obu.iccId = this.formGroup.get('ctrlIccId').value;
     this.batchBoxService.editObu(obu).subscribe(
-      data => console.log(data)
+      data => console.log(data),
+      () => null,
+      () => this.dialogRef.close(true)
     );
   }
 }

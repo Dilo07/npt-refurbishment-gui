@@ -77,6 +77,11 @@ export class BatchBoxService {
       .pipe(catchError(err => { throw err; }));
   }
 
+  getObuListByBox(id: number): Observable<Obu[]> {
+    return this.http.get<Obu[]>(this.apiUrl + `box/${id}/obu/list`)
+      .pipe(catchError(err => { throw err; }));
+  }
+
   // historic
 
   getBoxList(id: number): Observable<Box[]> {

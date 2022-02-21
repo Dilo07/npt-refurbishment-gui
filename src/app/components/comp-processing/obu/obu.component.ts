@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Box, Hardware, Obu } from '../../domain/domain';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 
@@ -15,7 +17,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     `
   ]
 })
-export class ObuComponent implements OnInit {
+export class ObuComponent implements OnInit, OnDestroy {
   @Output() public addObuEvent = new EventEmitter<Obu>();
   @Input() public actualBox: Box;
   public formGroup: FormGroup;
@@ -23,8 +25,11 @@ export class ObuComponent implements OnInit {
   public productDate = '';
   public isArianI: boolean;
 
+  private subscription: Subscription[] = [];
+
   constructor(
     private formBuilder: FormBuilder,
+    private batchBoxService: BatchBoxService,
     public dialog: MatDialog
   ) { }
 
@@ -44,6 +49,12 @@ export class ObuComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.subscription.forEach(subscription => {
+      subscription.unsubscribe();
+    });
+  }
+
   addObu(): void {
     if (!this.formGroup.invalid) {
       const obu = new Obu();
@@ -59,10 +70,19 @@ export class ObuComponent implements OnInit {
   }
 
   editObu(obu: Obu): void {
-    this.dialog.open(EditModalComponent, {
+    const dialogRef = this.dialog.open(EditModalComponent, {
       width: '50%',
       height: '40%',
       data: obu
     });
+    dialogRef.afterClosed().subscribe(
+      isEdit => {
+        if (isEdit) {
+          this.subscription.push(this.batchBoxService.getObuListByBox(this.actualBox.id).subscribe(
+            obuList => this.actualBox.obuList = obuList
+          ));
+        }
+      }
+    );
   }
 }
