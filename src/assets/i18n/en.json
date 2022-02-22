@@ -33,7 +33,11 @@
     "error": {
         "generic": "Error server site",
         "lot": {
-            "full": "Lot full"
+            "full": "Lot full",
+            "integrity": "Error during data management",
+            "integrityobu":"Obu Id into the box",
+            "integrityicc":"SIM (iccid) already into the box",
+            "invalid": "Failed to perform the operation"
         },
         "box": {
             "full": "Box full"

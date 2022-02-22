@@ -36,7 +36,11 @@
             "full": "Lotto pieno"
         },
         "box": {
-            "full": "Scatola piena"
+            "full": "Scatola piena",
+            "integrity": "Errore durante la gestione del dato",
+            "integrityobu":"Obu Id già presente nella scatola",
+            "integrityicc":"SIM (iccid) già presente nella scatola",
+            "invalid": "Operazione non consentita"
         },
         "ws": {
             "not_found": "Finger Id non valido"
