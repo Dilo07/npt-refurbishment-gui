@@ -92,6 +92,7 @@
         "INSERT_PRODATE": "Inserisci un product date corretto",
         "CLOUSURE": "Chiusura scatola automatica",
         "OPENING": "Apertura scatola automatica",
+        "EDITSUCC": "Obu modificato correttamente",
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
     "HISTORIC": {

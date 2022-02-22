@@ -92,6 +92,7 @@
         "INSERT_PRODATE": "Insert a correct product date",
         "CLOUSURE": "Automatic clousure box",
         "OPENING": "Automatic open box",
+        "EDITSUCC": "Obu correctly edited",
         "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
     },
     "HISTORIC": {

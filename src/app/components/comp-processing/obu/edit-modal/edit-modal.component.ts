@@ -33,7 +33,7 @@ export class EditModalComponent implements OnInit {
     obu.extendedObuId = this.formGroup.get('ctrlObuId').value;
     obu.iccId = this.formGroup.get('ctrlIccId').value;
     this.batchBoxService.editObu(obu).subscribe(
-      data => console.log(data),
+      () => null,
       () => null,
       () => this.dialogRef.close(true)
     );

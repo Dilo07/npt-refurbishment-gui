@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { SnackBar } from '@npt/npt-template';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
 import { Box, Hardware, Obu } from '../../domain/domain';
@@ -29,6 +30,7 @@ export class ObuComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
+    private snackBar: SnackBar,
     private batchBoxService: BatchBoxService,
     public dialog: MatDialog
   ) { }
@@ -79,7 +81,7 @@ export class ObuComponent implements OnInit, OnDestroy {
       isEdit => {
         if (isEdit) {
           this.subscription.push(this.batchBoxService.getObuListByBox(this.actualBox.id).subscribe(
-            obuList => this.actualBox.obuList = obuList
+            obuList => {this.actualBox.obuList = obuList; this.snackBar.showMessage('BOX.EDITSUCC', 'INFO'); }
           ));
         }
       }
