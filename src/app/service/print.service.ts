@@ -17,25 +17,33 @@ export class PrintService {
   }
 
   public async sendPrint(zpl: string): Promise<void> {
-    const printerStatus = await this.zebra.checkPrinterStatus();
-    console.log(printerStatus);
-    if (printerStatus.isReadyToPrint) {
-      if (!this.disablePrint) { this.zebra.print(zpl); console.log(zpl);};
-    } else {
-      this.snackBar.showMessage(printerStatus.errors, 'ERROR');
+    try {
+      const printerStatus = await this.zebra.checkPrinterStatus();
+      console.log(printerStatus);
+      if (printerStatus.isReadyToPrint) {
+        if (!this.disablePrint) { this.zebra.print(zpl); console.log(zpl); };
+      } else {
+        this.snackBar.showMessage(printerStatus.errors, 'ERROR');
+      }
+    } catch (error) {
+      this.snackBar.showMessage('Stampante non configurata', 'ERROR');
     }
   }
 
   private async setPrinter(): Promise<void> {
     /* const defaulPrinter = await this.zebra.getDefaultPrinter();
     console.log(defaulPrinter); */
-    const availablePrinter = await this.zebra.getAvailablePrinters();
-    availablePrinter.forEach((printer: Device) => {
-      if (printer.name === 'zebra') {
-        this.zebra.setPrinter(printer);
-      }
-    });
-    console.log(this.zebra);
+    try {
+      const availablePrinter = await this.zebra.getAvailablePrinters();
+      availablePrinter.forEach((printer: Device) => {
+        if (printer.name === 'zebra') {
+          this.zebra.setPrinter(printer);
+        }
+      });
+      console.log(this.zebra);
+    } catch (error) {
+      this.snackBar.showMessage('Stampante non configurata', 'ERROR');
+    }
   }
 
 }

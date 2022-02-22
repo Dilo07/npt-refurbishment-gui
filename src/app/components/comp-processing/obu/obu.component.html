@@ -27,8 +27,9 @@
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap="50px">
                 <div fxLayout="row" fxLayoutGap="20px" *ngFor="let item of actualBox.obuList">
-                    <mat-icon>tablet</mat-icon>
+                    <button mat-icon-button [disabled]="true" class="disableButton"><mat-icon>tablet</mat-icon></button>
                     <h4>{{item.extendedObuId}}</h4>
+                    <button mat-icon-button (click)="editObu(item)"><mat-icon>edit</mat-icon></button>
                 </div>
                 <p *ngIf="actualBox.obuList.length === 0">{{'BOX.NO_OBU' | translate}}</p>
             </div>

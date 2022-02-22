@@ -16,7 +16,7 @@ export class BatchComponent implements OnInit, OnDestroy {
   public batchOpen: boolean;
   public formGroup: FormGroup;
   public allHardware = [Hardware['arianna I'], Hardware['arianna II'], Hardware['even x'], Hardware['obu Go']];
-  public activeBatch: Batch[] = [];
+  public activeBatch: Batch;
   public complete = true;
 
   private subscription: Subscription[] = [];
@@ -44,7 +44,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     this.subscription.push(this.batchBoxService.getLotList(true).subscribe(
       list => {
         if (list.length > 0) {
-          this.activeBatch = list;
+          this.activeBatch = list[0];
           this.batchOpen = true;
         } else {
           // se non ci sono lotti aperti chiama la sequence, se viene da una scatola chiusa chiama la snackbar
@@ -73,7 +73,7 @@ export class BatchComponent implements OnInit, OnDestroy {
     formBatch.boxSize = this.formGroup.get('ctrlBoxSize').value;
     // invia il lotto e cambia componente nella view
     this.subscription.push(this.batchBoxService.addBatch(formBatch).subscribe(
-      (lot) => this.activeBatch = [lot],
+      (lot) => this.activeBatch = lot,
       () => null,
       () => this.snackBar.showMessage('PROCESSING.BATCH_CREATE', 'INFO')
     ));
