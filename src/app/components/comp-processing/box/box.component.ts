@@ -17,7 +17,7 @@ import { Batch, Box, Obu } from '../../domain/domain';
 })
 export class BoxComponent implements OnInit, OnDestroy {
   @Output() public boxTerminate = new EventEmitter<null>();
-  @Input() batchOpen: Batch[] = [];
+  @Input() batchOpen: Batch;
   public actualBox: Box;
   public panelOpenState = false;
   public opening = true;
@@ -49,7 +49,7 @@ export class BoxComponent implements OnInit, OnDestroy {
       box => this.actualBox = box,
       () => null,
       () => {
-        this.batchOpen[0].countOpenBox++;
+        this.batchOpen.countOpenBox++;
         this.snackBar.showMessage('BOX.ADD_BOX_SUCCESS', 'INFO');
       }
     ));
