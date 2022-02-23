@@ -1,6 +1,6 @@
 {
   "name": "npt-refurbishment-gui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -28,7 +28,7 @@
     "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
-    "zebra-browser-print-wrapper": "^0.1.4",
+    "zebra-browser-print-wrapper": "0.1.4",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {

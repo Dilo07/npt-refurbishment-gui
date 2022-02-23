@@ -14,7 +14,10 @@ import { DashboardComponent } from './components/comp-dashboard/dashboard.compon
 import { MenuItemService } from './npt-template-menu/menu-item.service';
 import { WorkstatNotfoundComponent } from './components/comp-workstat-notfound/workstat-notfound.component';
 
-export const translateHttploader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+const packageObj = require('../../package.json');
+const version = packageObj.version;
+export const translateHttploader =
+  (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http, 'assets/i18n/', '.json?version=' + version);
 
 
 @NgModule({
@@ -39,17 +42,17 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     }),
   ],
   providers: [
-    { provide: 'disablePrint', useValue: 'disablePrint'},
+    { provide: 'disablePrint', useValue: 'disablePrint' },
     {
       provide: 'disablePrintData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['disablePrint', ConfigInitService]
     },
-    { provide: 'mail', useValue: 'mail'},
+    { provide: 'mail', useValue: 'mail' },
     {
       provide: 'mailData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['mail', ConfigInitService]
     },
-    { provide: 'supplierCode', useValue: 'supplierCode'},
+    { provide: 'supplierCode', useValue: 'supplierCode' },
     {
       provide: 'supplierCodeData',
       useFactory: getPropertyFromConfig, multi: false, deps: ['supplierCode', ConfigInitService]
@@ -58,9 +61,9 @@ export const translateHttploader = (http: HttpClient): TranslateHttpLoader => ne
     { provide: 'menuService', useClass: MenuItemService },
     { provide: 'header', useValue: environment.header },
     { provide: 'footer', useValue: environment.footer },
-    { provide: 'dashboard', useValue: '/dashboard'},
+    { provide: 'dashboard', useValue: '/dashboard' },
     { provide: 'env', useValue: environment.security },
-    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent]
 })

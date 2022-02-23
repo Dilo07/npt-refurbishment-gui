@@ -33,7 +33,17 @@
     "error": {
         "generic": "Error server site",
         "lot": {
-            "full": "Lot full"
+            "full": "Lot full",
+            "integrity": "Error during data management",
+            "integrityobu":"Obu Id into the box",
+            "integrityicc":"SIM (iccid) already into the box",
+            "invalid": "Failed to perform the operation"
+        },
+        "box": {
+            "full": "Box full"
+        },
+        "ws": {
+            "not_found": "Invalivd finger Id"
         }
     },
     "PAGINATOR": {
@@ -86,6 +96,7 @@
         "INSERT_PRODATE": "Insert a correct product date",
         "CLOUSURE": "Automatic clousure box",
         "OPENING": "Automatic open box",
+        "EDITSUCC": "Obu correctly edited",
         "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
     },
     "HISTORIC": {

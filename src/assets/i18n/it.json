@@ -34,6 +34,16 @@
         "generic": "Errore lato server",
         "lot": {
             "full": "Lotto pieno"
+        },
+        "box": {
+            "full": "Scatola piena",
+            "integrity": "Errore durante la gestione del dato",
+            "integrityobu":"Obu Id già presente nella scatola",
+            "integrityicc":"SIM (iccid) già presente nella scatola",
+            "invalid": "Operazione non consentita"
+        },
+        "ws": {
+            "not_found": "Finger Id non valido"
         }
     },
     "PAGINATOR": {
@@ -64,7 +74,7 @@
         "BATCH_CREATE": "Lotto creato correttamente",
         "BATCH_END": "Lotto terminato"
     },
-    "BOX":{
+    "BOX": {
         "BOX": "Scatola",
         "BOX_OPEN": "Scatole aperte",
         "TITLE": "Lavorazione scatola",
@@ -86,6 +96,7 @@
         "INSERT_PRODATE": "Inserisci un product date corretto",
         "CLOUSURE": "Chiusura scatola automatica",
         "OPENING": "Apertura scatola automatica",
+        "EDITSUCC": "Obu modificato correttamente",
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
     "HISTORIC": {
