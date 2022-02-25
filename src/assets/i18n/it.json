@@ -88,6 +88,7 @@
         "ADD_BOX_SUCCESS": "Scatola creata",
         "ADD_OBU_SUCCESS": "Obu aggiunto",
         "CLOSE_BOX": "Chiudi scatola",
+        "CLOSE_BOX_SUCCESS": "Scatola chiusa correttamente",
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",
@@ -100,6 +101,8 @@
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
     "HISTORIC": {
+        "LOTID": "Id lotto",
+        "BOXID": "Id scatola",
         "ERROR_PRINT": "Stampanta non disponibile",
         "PRINT": "Stampa etichetta",
         "LOTNUM": "Num. lotto",
