@@ -4,7 +4,9 @@
         <mat-card fxFlex.gt-lg="20" fxFlex.gt-md="20" fxFlex.gt-xs="100" fxFlex="100">
             <mat-card-content>
                 <mat-card-title>{{'BOX.BATCH_N' | translate}}</mat-card-title>
-                <mat-card-subtitle>{{batchOpen.sequenceNumber + '/' + batchOpen.supplierCode + '/' + batchOpen.yearNumber }}</mat-card-subtitle>
+                <mat-card-subtitle>
+                    {{batchOpen.sequenceNumber + '/' + batchOpen.supplierCode + '/' + batchOpen.yearNumber }}
+                </mat-card-subtitle>
                 <mat-card-title>{{'BOX.NUM' | translate}}</mat-card-title>
                 <mat-card-subtitle>{{batchOpen.boxNumber}}</mat-card-subtitle>
                 <mat-card-title>{{'BOX.OBU_N' | translate}}</mat-card-title>
@@ -15,8 +17,8 @@
             <mat-card-content>
                 <span *ngIf="actualBox else batch">
                     <p>{{'PROCESSING.BATCH' | translate}}: {{actualBox.lot.countClosedBoxPercentage}}% -
-                        {{'BOX.BOX_OPEN' | translate}}:
-                        {{actualBox.lot.countOpenBox}}</p>
+                        {{'BOX.BOX_CLOSED' | translate}}: {{actualBox.lot.countClosedBox}} -
+                        {{'BOX.BOX_OPEN' | translate}}: {{actualBox.lot.countOpenBox}}</p>
                     <mat-progress-bar mode="determinate" value="{{actualBox.lot.countClosedBoxPercentage}}">
                     </mat-progress-bar>
                     <p>{{'BOX.BOX' | translate}}: {{actualBox.countPercentage}}%</p>
@@ -24,6 +26,7 @@
                 </span>
                 <ng-template #batch>
                     <p>{{'PROCESSING.BATCH' | translate}}: {{batchOpen.countClosedBoxPercentage}}% -
+                        {{'BOX.BOX_CLOSED' | translate}}: {{batchOpen.countClosedBox}} -
                         {{'BOX.BOX_OPEN'| translate}}: {{batchOpen.countOpenBox}}
                     </p>
                     <mat-progress-bar mode="determinate" value="{{batchOpen.countClosedBoxPercentage}}">

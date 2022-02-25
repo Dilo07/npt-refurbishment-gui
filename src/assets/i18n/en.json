@@ -55,9 +55,9 @@
         "OF": "of"
     },
     "PROCESSING": {
-        "TITLE": "Batch processing ",
-        "NEW_BATCH": "Insert the informations of new batch",
-        "BATCH": "Batch",
+        "TITLE": "Lot processing ",
+        "NEW_BATCH": "Insert the informations of new lot",
+        "BATCH": "Lot",
         "SUPC": "Supplier code",
         "INSERT_SUPC": "Insert a correct supplier code",
         "SEQUENCE": "Sequence",
@@ -70,13 +70,14 @@
         "BOX_SIZE": "Obu # for box",
         "INSERT_BOX_SIZE": "Insert obu # for box",
         "HARDWARE": "Insert type device",
-        "OPEN_BATCH": "Start batch",
-        "BATCH_CREATE": "Batch correctly created",
-        "BATCH_END": "Batch terminated"
+        "OPEN_BATCH": "Start lot",
+        "BATCH_CREATE": "Lot correctly created",
+        "BATCH_END": "Lot terminated"
     },
     "BOX":{
         "BOX": "Box",
         "BOX_OPEN": "Box open",
+        "BOX_CLOSED": "Box closed",
         "TITLE": "Box processing",
         "BATCH_N": "Lot number",
         "NUM": "Box number",

@@ -77,6 +77,7 @@
     "BOX": {
         "BOX": "Scatola",
         "BOX_OPEN": "Scatole aperte",
+        "BOX_CLOSED": "Scatole chiuse",
         "TITLE": "Lavorazione scatola",
         "BATCH_N": "Lotto",
         "NUM": "Numero scatole",
