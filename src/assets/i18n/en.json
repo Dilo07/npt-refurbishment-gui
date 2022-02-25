@@ -35,8 +35,8 @@
         "lot": {
             "full": "Lot full",
             "integrity": "Error during data management",
-            "integrityobu":"Obu Id into the box",
-            "integrityicc":"SIM (iccid) already into the box",
+            "integrityobu":"Obu Id already present",
+            "integrityicc":"SIM (iccid) already present",
             "invalid": "Failed to perform the operation"
         },
         "box": {
