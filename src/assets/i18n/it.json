@@ -33,7 +33,8 @@
     "error": {
         "generic": "Errore lato server",
         "lot": {
-            "full": "Lotto pieno"
+            "full": "Lotto pieno",
+            "gen": "Errore generazione xml"
         },
         "box": {
             "full": "Scatola piena",
