@@ -35,8 +35,8 @@
         "lot": {
             "full": "Lot full",
             "integrity": "Error during data management",
-            "integrityobu":"Obu Id into the box",
-            "integrityicc":"SIM (iccid) already into the box",
+            "integrityobu":"Obu Id already present",
+            "integrityicc":"SIM (iccid) already present",
             "invalid": "Failed to perform the operation"
         },
         "box": {
@@ -55,9 +55,9 @@
         "OF": "of"
     },
     "PROCESSING": {
-        "TITLE": "Batch processing ",
-        "NEW_BATCH": "Insert the informations of new batch",
-        "BATCH": "Batch",
+        "TITLE": "Lot processing ",
+        "NEW_BATCH": "Insert the informations of new lot",
+        "BATCH": "Lot",
         "SUPC": "Supplier code",
         "INSERT_SUPC": "Insert a correct supplier code",
         "SEQUENCE": "Sequence",
@@ -70,13 +70,14 @@
         "BOX_SIZE": "Obu # for box",
         "INSERT_BOX_SIZE": "Insert obu # for box",
         "HARDWARE": "Insert type device",
-        "OPEN_BATCH": "Start batch",
-        "BATCH_CREATE": "Batch correctly created",
-        "BATCH_END": "Batch terminated"
+        "OPEN_BATCH": "Start lot",
+        "BATCH_CREATE": "Lot correctly created",
+        "BATCH_END": "Lot terminated"
     },
     "BOX":{
         "BOX": "Box",
         "BOX_OPEN": "Box open",
+        "BOX_CLOSED": "Box closed",
         "TITLE": "Box processing",
         "BATCH_N": "Lot number",
         "NUM": "Box number",
@@ -88,6 +89,7 @@
         "ADD_BOX_SUCCESS": "Box created",
         "ADD_OBU_SUCCESS": "Obu added",
         "CLOSE_BOX": "Close box",
+        "CLOSE_BOX_SUCCESS": "Close box run correctly",
         "OBUID": "Insert obu Id",
         "INSERT_OBUID": "Insert a correct obu id",
         "ICCID": "Insert icc Id",
@@ -100,6 +102,8 @@
         "UNAVAILABLE": "Attenction! there aren't available box, wait for completion in other work stations"
     },
     "HISTORIC": {
+        "LOTID": "Lot Id",
+        "BOXID": "Box Id",
         "ERROR_PRINT": "Printer unavailable",
         "PRINT": "Print label",
         "LOTNUM": "Lot number",

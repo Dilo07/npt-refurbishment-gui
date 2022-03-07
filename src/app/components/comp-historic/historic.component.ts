@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { BatchBoxService } from 'src/app/service/batch-box.service';
@@ -21,6 +22,7 @@ import { Batch } from '../domain/domain';
 export class HistoricComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   public panelOpenState = false;
   public complete = true;
   public expandedElement: Batch | null;
@@ -54,7 +56,7 @@ export class HistoricComponent implements OnInit, OnDestroy {
   private getLotList(): void {
     this.complete = false;
     this.subscription.push(this.batchBoxService.getLotList(false).subscribe(
-      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator),
+      lotList => (this.dataSource.data = lotList, this.dataSource.paginator = this.paginator, this.dataSource.sort = this.sort),
       () => this.complete = true,
       () => this.complete = true
     ));

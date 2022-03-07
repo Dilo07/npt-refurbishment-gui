@@ -38,8 +38,8 @@
         "box": {
             "full": "Scatola piena",
             "integrity": "Errore durante la gestione del dato",
-            "integrityobu":"Obu Id già presente nella scatola",
-            "integrityicc":"SIM (iccid) già presente nella scatola",
+            "integrityobu":"Obu Id già presente",
+            "integrityicc":"SIM (iccid) già presente",
             "invalid": "Operazione non consentita"
         },
         "ws": {
@@ -77,6 +77,7 @@
     "BOX": {
         "BOX": "Scatola",
         "BOX_OPEN": "Scatole aperte",
+        "BOX_CLOSED": "Scatole chiuse",
         "TITLE": "Lavorazione scatola",
         "BATCH_N": "Lotto",
         "NUM": "Numero scatole",
@@ -88,6 +89,7 @@
         "ADD_BOX_SUCCESS": "Scatola creata",
         "ADD_OBU_SUCCESS": "Obu aggiunto",
         "CLOSE_BOX": "Chiudi scatola",
+        "CLOSE_BOX_SUCCESS": "Scatola chiusa correttamente",
         "OBUID": "Inserisci l'obu Id",
         "INSERT_OBUID": "Inserisci un obu id corretto",
         "ICCID": "Inserisci l'icc Id",
@@ -100,6 +102,8 @@
         "UNAVAILABLE": "Attenzione non ci sono scatole disponibili, attendere il completamento nelle altre postazioni"
     },
     "HISTORIC": {
+        "LOTID": "Id lotto",
+        "BOXID": "Id scatola",
         "ERROR_PRINT": "Stampanta non disponibile",
         "PRINT": "Stampa etichetta",
         "LOTNUM": "Num. lotto",

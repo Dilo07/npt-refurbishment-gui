@@ -59,17 +59,16 @@ export class BoxComponent implements OnInit, OnDestroy {
     // aggiunge l'obu se il box di ritorno è null richiama i lotti
     this.subscription.push(this.batchBoxService.addObu(obu, this.closure, this.opening).subscribe(
       box => {
-        if (!box) {
+        if (!box) { // se il lotto è terminato
           this.boxTerminate.emit();
         }
-        if (this.actualBox.id !== box?.id) { this.printLabelBox(this.actualBox.id); }
-        this.actualBox = box;
-      },
-      () => null,
-      () => {
-        if (this.actualBox) {
+        if (this.actualBox.id !== box?.id) { // se la scatola è cambiata stampa
+          this.printLabelBox(this.actualBox.id);
+          this.snackBar.showMessage('BOX.CLOSE_BOX_SUCCESS', 'INFO');
+        }else {
           this.snackBar.showMessage('BOX.ADD_OBU_SUCCESS', 'INFO');
         }
+        this.actualBox = box;
       }
     ));
   }
