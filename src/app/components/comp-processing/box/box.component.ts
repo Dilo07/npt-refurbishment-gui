@@ -65,7 +65,7 @@ export class BoxComponent implements OnInit, OnDestroy {
         if (this.actualBox.id !== box?.id) { // se la scatola è cambiata stampa
           this.printLabelBox(this.actualBox.id);
           this.snackBar.showMessage('BOX.CLOSE_BOX_SUCCESS', 'INFO');
-        }else {
+        } else {
           this.snackBar.showMessage('BOX.ADD_OBU_SUCCESS', 'INFO');
         }
         this.actualBox = box;
@@ -80,6 +80,8 @@ export class BoxComponent implements OnInit, OnDestroy {
       box => {
         if (!box) {
           this.boxTerminate.emit();
+        } else {
+          this.snackBar.showMessage('BOX.CLOSE_BOX_SUCCESS', 'INFO');
         }
         this.actualBox = box;
       }

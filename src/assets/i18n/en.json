@@ -34,13 +34,14 @@
         "generic": "Error server site",
         "lot": {
             "full": "Lot full",
+            "gen": "Error on generating xml"
+        },
+        "box": {
+            "full": "Box full",
             "integrity": "Error during data management",
             "integrityobu":"Obu Id already present",
             "integrityicc":"SIM (iccid) already present",
             "invalid": "Failed to perform the operation"
-        },
-        "box": {
-            "full": "Box full"
         },
         "ws": {
             "not_found": "Invalivd finger Id"
