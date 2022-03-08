@@ -80,9 +80,8 @@ export class BoxComponent implements OnInit, OnDestroy {
       box => {
         if (!box) {
           this.boxTerminate.emit();
-        } else {
-          this.snackBar.showMessage('BOX.CLOSE_BOX_SUCCESS', 'INFO');
         }
+        this.snackBar.showMessage('BOX.CLOSE_BOX_SUCCESS', 'INFO');
         this.actualBox = box;
       }
     ));
