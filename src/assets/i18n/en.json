@@ -45,7 +45,8 @@
         },
         "ws": {
             "not_found": "Invalivd finger Id"
-        }
+        },
+        "unknown": "Error unknown"
     },
     "PAGINATOR": {
         "ITEM": "Item for page",

@@ -45,7 +45,8 @@
         },
         "ws": {
             "not_found": "Finger Id non valido"
-        }
+        },
+        "unknown": "Errore sconosciuto"
     },
     "PAGINATOR": {
         "ITEM": "Elementi per pagina",
